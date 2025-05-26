@@ -1,0 +1,24 @@
+{
+  "name": "chrisguimarin.github.io",
+  "version": "1.0.0",
+  "description": "Personal website",
+  "main": "index.js",
+  "scripts": {
+    "start": "eleventy --serve",
+    "build": "eleventy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChrisGuimarin/chrisguimarin.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ChrisGuimarin/chrisguimarin.github.io/issues"
+  },
+  "homepage": "https://chrisguimarin.github.io",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.0"
+  }
+}
