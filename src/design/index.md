@@ -13,9 +13,12 @@ description: Case studies and principles from a Blizzard UX leader.
 {% endif %}
 {% endfor %}
 
+
+<!--
 ## Personal Projects
 {% for project in collections.work | reverse %}
 {% if project.data.type == "personal" %}
 - [{{ project.data.title }}]({{ project.url }}) - {{ project.data.role }}
 {% endif %}
 {% endfor %}
+-->
