@@ -19,6 +19,8 @@
   },
   "homepage": "https://chrisguimarin.github.io",
   "devDependencies": {
-    "@11ty/eleventy": "^3.1.0"
+    "@11ty/eleventy": "^3.1.0",
+    "postcss": "^8.5.5",
+    "postcss-import": "^16.1.0"
   }
 }

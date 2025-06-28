@@ -1,0 +1,21 @@
+---
+layout: base.njk
+---
+
+<nav class="sub-nav">
+    <a href="/shelf/">← Back to Shelf</a>
+</nav>
+
+<article class="book">
+    <div class="book-header">
+        <img src="{{ cover }}" alt="{{ title }} book cover" class="book-cover">
+        <div class="book-meta">
+            <h1>{{ title }}</h1>
+            <p class="book-author">by {{ author }}</p>
+            <p class="book-category">{{ category }}</p>
+            <a href="{{ link }}" class="book-link">Find this book</a>
+        </div>
+    </div>
+    
+    {{ content | safe }}
+</article>

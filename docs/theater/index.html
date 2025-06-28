@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Theater – Chris Guimarin</title>
+    <link rel="stylesheet" href="/assets/css/main.css" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+  </head>
+
+  <body>
+    <nav>
+      <ul>
+        <li><a href="/" >Home</a></li>
+        <li><a href="/design/" >Design</a></li>
+        <li><a href="/theater/" aria-current="page">Theater</a></li>
+        <li><a href="/projects/" >Projects</a></li>
+        <li><a href="/shelf/" >Shelf</a></li>
+        <li><a href="/about/" >About</a></li>
+        <!-- <li><a href="/contact/" >Contact</a></li> -->
+        <li>
+          <button 
+            id="theme-toggle" 
+            aria-label="Toggle dark mode"
+            title="Toggle dark mode">
+            <span class="theme-toggle-light">☀️</span>
+            <span class="theme-toggle-dark">🌙</span>
+          </button>
+        </li>
+      </ul>
+    </nav>
+
+    <main>
+      <h1>Theater</h1>
+<p>I back shows that nudge the art form forward. From Broadway debuts to experimental workshops, I look for stories that spark conversation and broaden who feels seen onstage.</p>
+<h2>Recent Involvements</h2>
+<div class="theater-wrapper">
+    <img class="theater-wrapper__img" src="/assets/images/theater/Real-Women-Have-Curves-Playbill-2025-04-01_Web.jpg" alt="Real Women Have Curves Playbill"  >
+</div>
+<ul>
+<li>Real Women Have Curves (investor, 2025)</li>
+</ul>
+<p>Have a project that needs a champion? <a href="mailto:hello@chrisguimarin.com?subject=Theater%20Project">Let's grab coffee</a>.</p>
+
+    </main>
+
+    <footer>
+      <p>© 2025 Chris Guimarin. All opinions my own.</p>
+    </footer>
+
+    <script>
+      const themeToggle = document.getElementById('theme-toggle');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+      // Get theme from localStorage or system preference
+      const getTheme = () => {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) return savedTheme;
+        return prefersDark.matches ? 'dark' : 'light';
+      };
+
+      // Apply theme (optionally persist)
+      const setTheme = (theme, persist = false) => {
+        document.documentElement.setAttribute('data-theme', theme);
+        if (persist) {
+          localStorage.setItem('theme', theme);
+        }
+      };
+
+      // Initialize theme (do not persist)
+      setTheme(getTheme());
+
+      // Toggle theme (persist user choice)
+      themeToggle.addEventListener('click', () => {
+        const currentTheme = getTheme();
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        setTheme(newTheme, true);
+      });
+
+      // Listen for system theme changes (only if no user override)
+      prefersDark.addEventListener('change', (e) => {
+        if (!localStorage.getItem('theme')) {
+          setTheme(e.matches ? 'dark' : 'light');
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Is it creative confidence or really intellectual courage? – Chris Guimarin</title>
+    <link rel="stylesheet" href="/assets/css/main.css" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+  </head>
+
+  <body>
+    <nav>
+      <ul>
+        <li><a href="/" >Home</a></li>
+        <li><a href="/design/" >Design</a></li>
+        <li><a href="/theater/" >Theater</a></li>
+        <li><a href="/projects/" >Projects</a></li>
+        <li><a href="/shelf/" >Shelf</a></li>
+        <li><a href="/about/" >About</a></li>
+        <!-- <li><a href="/contact/" >Contact</a></li> -->
+        <li>
+          <button 
+            id="theme-toggle" 
+            aria-label="Toggle dark mode"
+            title="Toggle dark mode">
+            <span class="theme-toggle-light">☀️</span>
+            <span class="theme-toggle-dark">🌙</span>
+          </button>
+        </li>
+      </ul>
+    </nav>
+
+    <main>
+      
+<nav class="sub-nav">
+    <a href="/shelf/">← Back to Shelf</a>
+</nav>
+
+<article>
+    <h1>Is it creative confidence or really intellectual courage?</h1>
+    <time datetime="2025-01-15T00:00:00.000Z">January 14, 2025</time>
+    
+    <p>Content of your post goes here...</p>
+
+</article>
+    </main>
+
+    <footer>
+      <p>© 2025 Chris Guimarin. All opinions my own.</p>
+    </footer>
+
+    <script>
+      const themeToggle = document.getElementById('theme-toggle');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+      // Get theme from localStorage or system preference
+      const getTheme = () => {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) return savedTheme;
+        return prefersDark.matches ? 'dark' : 'light';
+      };
+
+      // Apply theme (optionally persist)
+      const setTheme = (theme, persist = false) => {
+        document.documentElement.setAttribute('data-theme', theme);
+        if (persist) {
+          localStorage.setItem('theme', theme);
+        }
+      };
+
+      // Initialize theme (do not persist)
+      setTheme(getTheme());
+
+      // Toggle theme (persist user choice)
+      themeToggle.addEventListener('click', () => {
+        const currentTheme = getTheme();
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        setTheme(newTheme, true);
+      });
+
+      // Listen for system theme changes (only if no user override)
+      prefersDark.addEventListener('change', (e) => {
+        if (!localStorage.getItem('theme')) {
+          setTheme(e.matches ? 'dark' : 'light');
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,14 @@
+---
+layout: base.njk
+---
+
+<nav class="sub-nav">
+    <a href="/design/">← Back to Design Work</a>
+</nav>
+
+<article class="work">
+    <h1>{{ title }}</h1>
+    <p class="work-meta">{{ role }} • {{ year }}</p>
+    
+    {{ content | safe }}
+</article>

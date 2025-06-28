@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>About Chris Guimarin – Chris Guimarin</title>
+    <link rel="stylesheet" href="/assets/css/main.css" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+  </head>
+
+  <body>
+    <nav>
+      <ul>
+        <li><a href="/" >Home</a></li>
+        <li><a href="/design/" >Design</a></li>
+        <li><a href="/theater/" >Theater</a></li>
+        <li><a href="/projects/" >Projects</a></li>
+        <li><a href="/shelf/" >Shelf</a></li>
+        <li><a href="/about/" aria-current="page">About</a></li>
+        <!-- <li><a href="/contact/" >Contact</a></li> -->
+        <li>
+          <button 
+            id="theme-toggle" 
+            aria-label="Toggle dark mode"
+            title="Toggle dark mode">
+            <span class="theme-toggle-light">☀️</span>
+            <span class="theme-toggle-dark">🌙</span>
+          </button>
+        </li>
+      </ul>
+    </nav>
+
+    <main>
+      <h1>About</h1>
+<div class="about-intro">
+<img src="/assets/images/chris-guimarin.png" alt="Chris Guimarin" class="profile-photo">
+<p>I thrive at the intersection of imagination and pragmatism. Raised in Los Gatos, California, now rooted in New York City, I jump into the best-coast debate whenever it surfaces. As Senior Manager of User Experience at Blizzard Entertainment I lead designers who elevate the player-support journey, build internal tools that keep live services humming, and clear workflows for game developers. My superpower is converting abstract ideas into road-ready steps.</p>
+<p>Outside games I co-founded Currant Productions and invest in shows like Real Women Have Curves. My years co-chairing Broadway Cares' NextGen Network proved the power of community; together we have raised more than three hundred fifty thousand dollars for artists in need. Whether sketching a feature flow or producing a concert, I love bringing creative visions to life and maximizing their impact.</p>
+</div>
+<p>Curious about Broadway investing, product design, or making creative ideas real? <a href="mailto:hello@chrisguimarin.com?subject=Hello%20Chris!">Email me</a>, connect on <a href="https://www.linkedin.com/in/chrisguimarin">LinkedIn</a>, follow on <a href="https://www.instagram.com/chrisguimarin/">Instagram</a>, or subscribe to my newsletter for first-look updates.</p>
+
+    </main>
+
+    <footer>
+      <p>© 2025 Chris Guimarin. All opinions my own.</p>
+    </footer>
+
+    <script>
+      const themeToggle = document.getElementById('theme-toggle');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+      // Get theme from localStorage or system preference
+      const getTheme = () => {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) return savedTheme;
+        return prefersDark.matches ? 'dark' : 'light';
+      };
+
+      // Apply theme (optionally persist)
+      const setTheme = (theme, persist = false) => {
+        document.documentElement.setAttribute('data-theme', theme);
+        if (persist) {
+          localStorage.setItem('theme', theme);
+        }
+      };
+
+      // Initialize theme (do not persist)
+      setTheme(getTheme());
+
+      // Toggle theme (persist user choice)
+      themeToggle.addEventListener('click', () => {
+        const currentTheme = getTheme();
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        setTheme(newTheme, true);
+      });
+
+      // Listen for system theme changes (only if no user override)
+      prefersDark.addEventListener('change', (e) => {
+        if (!localStorage.getItem('theme')) {
+          setTheme(e.matches ? 'dark' : 'light');
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,367 @@
+/* Import Base Styles */
+@import "breakpoints.css";
+@import "theme.css";
+
+/* Import Components */
+@import "components/nav.css";
+@import "components/book.css";
+@import "components/theater.css";
+
+
+
+
+/* ==========================================================================
+   CSS Custom Properties (Variables)
+   ========================================================================== */
+:root {
+    /* Layout */
+    --max-content-width: 80ch;
+    --container-padding: var(--spacing-md);
+
+    /* Typography */
+    --font-family-base: system-ui, -apple-system, sans-serif;
+    --line-height-base: 1.5;
+    --font-size-small: 0.9rem;
+
+    /* Spacing Scale */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 3rem;
+
+    /* Component Specific */
+    --book-width: 180px;
+    --border-radius: 4px;
+
+    /* Shadows */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.15);
+
+    /* Breakpoints */
+    --breakpoint-xl: 1400px;
+    --breakpoint-lg: 800px;
+    --breakpoint-md: 600px;
+    --breakpoint-sm: 500px;
+    --breakpoint-xs: 400px;
+
+    /* Light Theme Colors */
+    --color-bg: #ffffff;
+    --color-text: #1a1a1a;
+    --color-text-muted: #666666;
+    --color-primary: #11689b;
+    --color-border: #e5e5e5;
+}
+
+/* Dark theme colors */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme='light']) {
+        --color-bg: #1a1a1a;
+        --color-text: #ffffff;
+        --color-text-muted: #a0a0a0;
+        --color-primary: #4da8da;
+        --color-border: #333333;
+    }
+}
+
+[data-theme='dark'] {
+    --color-bg: #1a1a1a;
+    --color-text: #ffffff;
+    --color-text-muted: #a0a0a0;
+    --color-primary: #4da8da;
+    --color-border: #333333;
+}
+
+/* ==========================================================================
+   Base Styles
+   ========================================================================== */
+body {
+    max-width: var(--max-content-width);
+    margin: 0 auto;
+    padding: var(--spacing-md);
+    font-family: system-ui, sans-serif;
+    line-height: 1.5;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+}
+
+h1 {
+    color: var(--color-primary);
+}
+
+/* Base link styles */
+a {
+    color: var(--color-primary);
+    text-decoration: underline;
+    text-decoration-thickness: 0.05em;
+    text-underline-offset: 0.2em;
+}
+
+a:hover {
+    text-decoration-thickness: 0.2em;
+}
+
+/* Override link color for nav and certain components */
+nav a,
+.sub-nav a {
+    color: inherit;
+    text-decoration: none;
+}
+
+nav a:hover,
+.sub-nav a:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 0.1em;
+}
+
+/* ==========================================================================
+   Navigation
+   ========================================================================== */
+/* Primary Navigation */
+nav {
+    margin-bottom: var(--spacing-md);
+}
+
+nav a {
+    color: inherit;
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: var(--spacing-xs);
+}
+
+nav li:not(:last-child)::after {
+    content: "/";
+    margin-left: var(--spacing-xs);
+    color: var(--color-text-muted);
+}
+
+nav a[aria-current="page"] {
+    font-weight: bold;
+}
+
+/* Secondary Navigation */
+.sub-nav {
+    margin-bottom: var(--spacing-md);
+}
+
+.sub-nav a {
+    color: var(--color-text-muted);
+    text-decoration: none;
+}
+
+.sub-nav a:hover {
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   About Section
+   ========================================================================== */
+.about-intro {
+    overflow: hidden;
+    margin: .5rem 0;
+}
+
+.profile-photo {
+    float: left;
+    max-width: 300px;
+    border-radius: var(--border-radius);
+    margin: var(--spacing-sm) var(--spacing-md) var(--spacing-sm) 0;
+}
+
+/* ==========================================================================
+   Book Grid Layout
+   ========================================================================== */
+.book-grid {
+    /* Use CSS Grid instead of flex so we can let the browser decide
+       how many 180 px columns fit inside the content width */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, var(--book-width));
+    gap: var(--spacing-sm);
+    margin: var(--spacing-md) auto;
+    /* keep the grid flush with the header text */
+    justify-content: left;
+    /* centres the grid so leftover space is split */
+}
+
+.book-grid figure {
+    margin: 0;
+    width: var(--book-width);
+    /* lock each card to 180 px */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.2s ease;
+}
+
+.book-grid figure:hover {
+    transform: translateY(-2px);
+}
+
+.book-grid img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 2/3;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+}
+
+.book-grid figcaption {
+    margin-top: var(--spacing-sm);
+    font-size: 0.9rem;
+    line-height: 1.4;
+    text-align: center;
+    width: 100%;
+    color: var(--color-text);
+}
+
+/* ==========================================================================
+   Individual Book Page
+   ========================================================================== */
+.book-header {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: var(--spacing-md);
+    margin: 2rem 0;
+}
+
+.book-cover {
+    width: 100%;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+}
+
+.book-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+/* ==========================================================================
+   Media Queries (Desktop First)
+   ========================================================================== */
+
+/* Four-column shelf (1400px and up) */
+@media (min-width: var(--breakpoint-xl)) {
+    .book-grid {
+        grid-template-columns: repeat(4, var(--book-width));
+        justify-content: space-between;
+    }
+}
+
+/* Three-column shelf (800px - 1399px) */
+@media (max-width: var(--breakpoint-xl)) {
+    .book-grid {
+        grid-template-columns: repeat(3, var(--book-width));
+        justify-content: space-between;
+    }
+}
+
+/* === Fine-grained mobile breakpoints === */
+
+/* Medium tablets (600px - 799px) */
+@media (max-width: var(--breakpoint-lg)) {
+    :root {
+        --book-width: min(calc((100vw - var(--spacing-md) * 2 - var(--spacing-sm)) / 2), 180px);
+    }
+
+    .book-grid {
+        grid-template-columns: repeat(2, var(--book-width));
+        justify-content: space-between;
+        gap: var(--spacing-sm);
+    }
+}
+
+/* Small tablets (500px - 599px) */
+@media (min-width: 500px) and (max-width: 599px) {
+    :root {
+        --book-width: min(calc((100vw - var(--spacing-md) * 2 - var(--spacing-sm) * 2) / 3), 180px);
+    }
+
+    .book-grid {
+        grid-template-columns: repeat(3, var(--book-width));
+    }
+}
+
+/* Large phones (400px - 499px) */
+@media (min-width: 400px) and (max-width: 499px) {
+    :root {
+        --book-width: min(calc((100vw - var(--spacing-sm) * 3) / 2), 180px);
+    }
+
+    .book-grid {
+        grid-template-columns: repeat(2, var(--book-width));
+        gap: var(--spacing-sm);
+    }
+}
+
+/* Small phones (300px - 399px) */
+@media (min-width: 300px) and (max-width: 399px) {
+    :root {
+        --book-width: calc((100vw - var(--spacing-sm) * 3) / 2);
+    }
+
+    .book-grid {
+        grid-template-columns: repeat(2, var(--book-width));
+        gap: var(--spacing-sm);
+    }
+
+    body {
+        padding: var(--spacing-sm);
+    }
+}
+
+/* Extra small phones (under 300px) */
+@media (max-width: 299px) {
+    :root {
+        --book-width: calc(100vw - var(--spacing-sm) * 2);
+    }
+
+    .book-grid {
+        grid-template-columns: var(--book-width);
+        justify-content: center;
+        gap: var(--spacing-md);
+    }
+
+    body {
+        padding: var(--spacing-sm);
+    }
+}
+
+#theme-toggle {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+}
+
+#theme-toggle:hover {
+    opacity: 0.8;
+}
+
+.theme-toggle-light {
+    display: none;
+}
+
+.theme-toggle-dark {
+    display: block;
+}
+
+[data-theme='dark'] .theme-toggle-light {
+    display: block;
+}
+
+[data-theme='dark'] .theme-toggle-dark {
+    display: none;
+}

@@ -1,3 +1,3 @@
 Welcome to the Git Repo for ChrisGuimarin.com
 
-This is staging ground for learning how to use Git. 
+This is where I am learning how to code and have my own little playground. 

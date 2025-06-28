@@ -1,27 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Home – Chris Guimarin</title>
+    <link rel="stylesheet" href="/assets/css/main.css" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+  </head>
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chris Guimarin</title>
-    <link rel="stylesheet" href="style.css" />
-</head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="/" aria-current="page">Home</a></li>
+        <li><a href="/design/" >Design</a></li>
+        <li><a href="/theater/" >Theater</a></li>
+        <li><a href="/projects/" >Projects</a></li>
+        <li><a href="/shelf/" >Shelf</a></li>
+        <li><a href="/about/" >About</a></li>
+        <!-- <li><a href="/contact/" >Contact</a></li> -->
+        <li>
+          <button 
+            id="theme-toggle" 
+            aria-label="Toggle dark mode"
+            title="Toggle dark mode">
+            <span class="theme-toggle-light">☀️</span>
+            <span class="theme-toggle-dark">🌙</span>
+          </button>
+        </li>
+      </ul>
+    </nav>
 
-<body>
     <main>
-        <h1>Chris Guimarin</h1>
-        <p>Designing experiences, backing Broadway, and building what comes next.</p>
-        <p>I lead designers who smooth every click on Battle.net, from support tickets to checkout flows. We also make
-            it easy for game developers to integrate with Battle.net and use our platform. After hours I
-            champion new stage stories with Broadway Cares and hunt for tomorrow’s breakout musical.</p>
-        <p>Into games, theater, or design? Let's talk.</p>
-        <ul>
-            <li><a href="https://www.linkedin.com/in/chrisguimarin">LinkedIn</a></li>
-            <li><a href="https://bsky.app/profile/chrisguimarin.com">Bluesky</a></li>
-            <li><a href="mailto:hello@chrisguimarin.com?subject=Hello%20Chris!">Email me</a></li>
-        </ul>
-    </main>
-</body>
+      <h1>Hi, I'm Chris.</h1>
+<h2>Design Leader and Broadway Backer</h2>
+<p>Where imagination meets pragmatism.</p>
+<p>Millions of players rely on Battle.net every day. My team smooths their experience from the moment they log in to the final checkout screen. Behind the scenes we power the tools that support customer service teams, helping them respond with clarity and speed. For game developers we simplify integration with Battle.net. Whether they build immersive player features, seamless commerce flows, or resilient support systems, we clear the path. Off the clock, you’ll catch me volunteering on the board of NextGen Advocates, Broadway Cares’ young‐professionals network, soaking up fresh industry insight and scouting the next show that will send audiences leaping to their feet.</p>
+<p>Into games, theater, or design? Let's talk.</p>
+<ul>
+<li><a href="https://www.linkedin.com/in/chrisguimarin">LinkedIn</a></li>
+<li><a href="https://www.instagram.com/chrisguimarin/">Instagram</a></li>
+<li><a href="https://bsky.app/profile/chrisguimarin.com">Bluesky</a></li>
+<li><a href="mailto:hello@chrisguimarin.com?subject=Hello%20Chris!">Email me</a></li>
+</ul>
 
+    </main>
+
+    <footer>
+      <p>© 2025 Chris Guimarin. All opinions my own.</p>
+    </footer>
+
+    <script>
+      const themeToggle = document.getElementById('theme-toggle');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+      // Get theme from localStorage or system preference
+      const getTheme = () => {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) return savedTheme;
+        return prefersDark.matches ? 'dark' : 'light';
+      };
+
+      // Apply theme (optionally persist)
+      const setTheme = (theme, persist = false) => {
+        document.documentElement.setAttribute('data-theme', theme);
+        if (persist) {
+          localStorage.setItem('theme', theme);
+        }
+      };
+
+      // Initialize theme (do not persist)
+      setTheme(getTheme());
+
+      // Toggle theme (persist user choice)
+      themeToggle.addEventListener('click', () => {
+        const currentTheme = getTheme();
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        setTheme(newTheme, true);
+      });
+
+      // Listen for system theme changes (only if no user override)
+      prefersDark.addEventListener('change', (e) => {
+        if (!localStorage.getItem('theme')) {
+          setTheme(e.matches ? 'dark' : 'light');
+        }
+      });
+    </script>
+  </body>
 </html>
