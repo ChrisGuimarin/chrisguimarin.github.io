@@ -1,163 +1,15 @@
 /* Import Base Styles */
-/* ==========================================================================
-   Media Query Mixins
-   ========================================================================== */
-/* Usage example:
-@media (min-width: var(--breakpoint-xl)) { ... } */
-/* Mobile-first breakpoints */
-/* Small phones and up (300px) */
-/* Medium phones and up (400px) */
-/* Tablets and up (600px) */
-/* Desktop and up (800px) */
-/* Large Desktop (1400px) */
-/* Or Desktop-first breakpoints */
-/* Large Desktop and down */
-/* Desktop and down */
-/* Tablets and down */
-/* Medium phones and down */
-/* Small phones and down */
-/* ==========================================================================
-   Theme Styles
-   ========================================================================== */
-/* Dark theme colors */
-@media (prefers-color-scheme: dark) {
-    :root:not([data-theme='light']) {
-        --color-bg: #1a1a1a;
-        --color-text: #ffffff;
-        --color-text-muted: #a0a0a0;
-        --color-primary: #4da8da;
-        --color-border: #333333;
-    }
-}
-[data-theme='dark'] {
-    --color-bg: #1a1a1a;
-    --color-text: #ffffff;
-    --color-text-muted: #a0a0a0;
-    --color-primary: #4da8da;
-    --color-border: #333333;
-}
-/* Theme Toggle Styles */
-#theme-toggle {
-    background: none;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    font-size: 1.2rem;
-}
-#theme-toggle:hover {
-    opacity: 0.8;
-}
-.theme-toggle-light {
-    display: none;
-}
-.theme-toggle-dark {
-    display: block;
-}
-[data-theme='dark'] .theme-toggle-light {
-    display: block;
-}
-[data-theme='dark'] .theme-toggle-dark {
-    display: none;
-}
+@import "breakpoints.css";
+@import "theme.css";
+
 /* Import Components */
-/* ==========================================================================
-   Navigation
-   ========================================================================== */
-/* Primary Navigation */
-nav {
-    margin-bottom: var(--spacing-md);
-}
-nav a {
-    color: inherit;
-    text-decoration: none;
-}
-nav a:hover {
-    text-decoration: underline;
-}
-nav ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    gap: var(--spacing-xs);
-}
-nav li:not(:last-child)::after {
-    content: "/";
-    margin-left: var(--spacing-xs);
-    color: var(--color-text-muted);
-}
-nav a[aria-current="page"] {
-    font-weight: bold;
-}
-/* Secondary Navigation */
-.sub-nav {
-    margin-bottom: var(--spacing-md);
-}
-.sub-nav a {
-    color: var(--color-text-muted);
-    text-decoration: none;
-}
-.sub-nav a:hover {
-    text-decoration: underline;
-}
-/* ==========================================================================
-   Book Grid Layout
-   ========================================================================== */
-.book-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, var(--book-width));
-    gap: var(--spacing-sm);
-    margin: var(--spacing-md) auto;
-    justify-content: left;
-}
-.book-grid figure {
-    margin: 0;
-    width: var(--book-width);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: transform 0.2s ease;
-}
-.book-grid figure:hover {
-    transform: translateY(-2px);
-}
-.book-grid img {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 2/3;
-    object-fit: cover;
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow-sm);
-}
-.book-grid figcaption {
-    margin-top: var(--spacing-sm);
-    font-size: 0.9rem;
-    line-height: 1.4;
-    text-align: center;
-    width: 100%;
-    color: var(--color-text);
-}
-/* Theater Components */
-.theater-wrapper {
-    max-width: 200px;
-    /* updated cap moved from inline style */
-    margin: var(--spacing-sm) 0;
-}
-.theater-wrapper img {
-    width: 100%;
-    /* Make image fill wrapper */
-    max-width: 100%;
-    /* ensures the image fills wrapper up to 200px */
-    height: auto;
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow-md);
-    display: block;
-}
-.theater-wrapper img:hover {
-    transform: translateY(-2px);
-    transition: transform 0.2s ease;
-}
+@import "components/nav.css";
+@import "components/book.css";
+@import "components/theater.css";
+
+
+
+
 /* ==========================================================================
    CSS Custom Properties (Variables)
    ========================================================================== */
@@ -167,7 +19,7 @@ nav a[aria-current="page"] {
     --container-padding: var(--spacing-md);
 
     /* Typography */
-    --font-family-base: system-ui, -apple-system, sans-serif;
+    --font-family-base: 'Nunito Sans', system-ui, -apple-system, sans-serif;
     --line-height-base: 1.5;
     --font-size-small: 0.9rem;
 
@@ -199,6 +51,7 @@ nav a[aria-current="page"] {
     --color-primary: #11689b;
     --color-border: #e5e5e5;
 }
+
 /* Dark theme colors */
 @media (prefers-color-scheme: dark) {
     :root:not([data-theme='light']) {
@@ -209,6 +62,7 @@ nav a[aria-current="page"] {
         --color-border: #333333;
     }
 }
+
 [data-theme='dark'] {
     --color-bg: #1a1a1a;
     --color-text: #ffffff;
@@ -216,21 +70,52 @@ nav a[aria-current="page"] {
     --color-primary: #4da8da;
     --color-border: #333333;
 }
+
 /* ==========================================================================
    Base Styles
    ========================================================================== */
+html,
 body {
-    max-width: var(--max-content-width);
-    margin: 0 auto;
-    padding: var(--spacing-md);
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    /* Remove max-width, margin, and padding here */
     font-family: system-ui, sans-serif;
     line-height: 1.5;
     background-color: var(--color-bg);
     color: var(--color-text);
 }
+
+body,
+.site-wrapper {
+    font-family: var(--font-family-base);
+}
+
+.site-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    max-width: var(--max-content-width);
+    margin: 0 auto;
+    padding: var(--spacing-sm);
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-family-base);
+    /* <-- use the variable here */
+    line-height: 1.5;
+}
+
+main {
+    flex: 1;
+}
+
 h1 {
     color: var(--color-primary);
 }
+
 /* Base link styles */
 a {
     color: var(--color-primary);
@@ -238,59 +123,72 @@ a {
     text-decoration-thickness: 0.05em;
     text-underline-offset: 0.2em;
 }
+
 a:hover {
     text-decoration-thickness: 0.2em;
 }
+
 /* Override link color for nav and certain components */
 nav a,
 .sub-nav a {
     color: inherit;
     text-decoration: none;
 }
+
 nav a:hover,
 .sub-nav a:hover {
     text-decoration: underline;
     text-decoration-thickness: 0.1em;
 }
+
 /* ==========================================================================
    Navigation
    ========================================================================== */
 /* Primary Navigation */
 nav {
-    margin-bottom: var(--spacing-md);
+    margin-bottom: 0px;
 }
+
 nav a {
     color: inherit;
     text-decoration: none;
 }
+
 nav a:hover {
     text-decoration: underline;
 }
+
 nav ul {
     list-style: none;
     padding: 0;
     display: flex;
     gap: var(--spacing-xs);
 }
-nav li:not(:last-child)::after {
+
+nav li.nav-link+li.nav-link::after {
     content: "/";
     margin-left: var(--spacing-xs);
     color: var(--color-text-muted);
 }
+
 nav a[aria-current="page"] {
     font-weight: bold;
 }
+
 /* Secondary Navigation */
 .sub-nav {
     margin-bottom: var(--spacing-md);
 }
+
 .sub-nav a {
     color: var(--color-text-muted);
     text-decoration: none;
 }
+
 .sub-nav a:hover {
     text-decoration: underline;
 }
+
 /* ==========================================================================
    About Section
    ========================================================================== */
@@ -298,12 +196,14 @@ nav a[aria-current="page"] {
     overflow: hidden;
     margin: .5rem 0;
 }
+
 .profile-photo {
     float: left;
     max-width: 300px;
     border-radius: var(--border-radius);
     margin: var(--spacing-sm) var(--spacing-md) var(--spacing-sm) 0;
 }
+
 /* ==========================================================================
    Book Grid Layout
    ========================================================================== */
@@ -318,6 +218,7 @@ nav a[aria-current="page"] {
     justify-content: left;
     /* centres the grid so leftover space is split */
 }
+
 .book-grid figure {
     margin: 0;
     width: var(--book-width);
@@ -327,9 +228,11 @@ nav a[aria-current="page"] {
     align-items: center;
     transition: transform 0.2s ease;
 }
+
 .book-grid figure:hover {
     transform: translateY(-2px);
 }
+
 .book-grid img {
     width: 100%;
     height: auto;
@@ -338,6 +241,7 @@ nav a[aria-current="page"] {
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-sm);
 }
+
 .book-grid figcaption {
     margin-top: var(--spacing-sm);
     font-size: 0.9rem;
@@ -346,6 +250,7 @@ nav a[aria-current="page"] {
     width: 100%;
     color: var(--color-text);
 }
+
 /* ==========================================================================
    Individual Book Page
    ========================================================================== */
@@ -355,19 +260,23 @@ nav a[aria-current="page"] {
     gap: var(--spacing-md);
     margin: 2rem 0;
 }
+
 .book-cover {
     width: 100%;
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-md);
 }
+
 .book-meta {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
 }
+
 /* ==========================================================================
    Media Queries (Desktop First)
    ========================================================================== */
+
 /* Four-column shelf (1400px and up) */
 @media (min-width: var(--breakpoint-xl)) {
     .book-grid {
@@ -375,6 +284,7 @@ nav a[aria-current="page"] {
         justify-content: space-between;
     }
 }
+
 /* Three-column shelf (800px - 1399px) */
 @media (max-width: var(--breakpoint-xl)) {
     .book-grid {
@@ -382,7 +292,9 @@ nav a[aria-current="page"] {
         justify-content: space-between;
     }
 }
+
 /* === Fine-grained mobile breakpoints === */
+
 /* Medium tablets (600px - 799px) */
 @media (max-width: var(--breakpoint-lg)) {
     :root {
@@ -395,6 +307,7 @@ nav a[aria-current="page"] {
         gap: var(--spacing-sm);
     }
 }
+
 /* Small tablets (500px - 599px) */
 @media (min-width: 500px) and (max-width: 599px) {
     :root {
@@ -405,6 +318,7 @@ nav a[aria-current="page"] {
         grid-template-columns: repeat(3, var(--book-width));
     }
 }
+
 /* Large phones (400px - 499px) */
 @media (min-width: 400px) and (max-width: 499px) {
     :root {
@@ -416,6 +330,7 @@ nav a[aria-current="page"] {
         gap: var(--spacing-sm);
     }
 }
+
 /* Small phones (300px - 399px) */
 @media (min-width: 300px) and (max-width: 399px) {
     :root {
@@ -431,6 +346,7 @@ nav a[aria-current="page"] {
         padding: var(--spacing-sm);
     }
 }
+
 /* Extra small phones (under 300px) */
 @media (max-width: 299px) {
     :root {
@@ -447,6 +363,7 @@ nav a[aria-current="page"] {
         padding: var(--spacing-sm);
     }
 }
+
 #theme-toggle {
     background: none;
     border: none;
@@ -456,18 +373,107 @@ nav a[aria-current="page"] {
     align-items: center;
     font-size: 1.2rem;
 }
+
 #theme-toggle:hover {
     opacity: 0.8;
 }
+
 .theme-toggle-light {
     display: none;
 }
+
 .theme-toggle-dark {
     display: block;
 }
+
 [data-theme='dark'] .theme-toggle-light {
     display: block;
 }
+
 [data-theme='dark'] .theme-toggle-dark {
     display: none;
+}
+
+.theme-toggle-group {
+    display: flex;
+    align-items: center;
+    position: relative;
+    /* Remove or comment out the next line: */
+    /* height: 2.2em; */
+}
+
+#theme-toggle,
+#theme-reset {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    line-height: 1;
+    vertical-align: middle;
+}
+
+#theme-toggle span,
+#theme-reset {
+    line-height: 1;
+    vertical-align: middle;
+    /* Optional: tweak baseline alignment */
+    position: relative;
+    top: 0px;
+}
+
+#theme-reset {
+    visibility: hidden;
+    opacity: 0;
+    margin-left: 0.5em;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    align-items: center;
+    transition: opacity 0.2s;
+}
+
+.theme-toggle-group:hover #theme-reset,
+.theme-toggle-group:focus-within #theme-reset {
+    visibility: visible;
+    opacity: 1;
+}
+
+a:focus,
+button:focus {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+/* Visually hide skip link except when focused */
+.skip-link {
+    position: absolute;
+    left: -999px;
+    top: auto;
+    width: 0px;
+    height: 0px;
+    overflow: hidden;
+    z-index: 100;
+    background: #fff;
+    color: #000;
+    padding: 0.5em 1em;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.skip-link:focus {
+    left: 1rem;
+    top: 1rem;
+    width: auto;
+    height: auto;
+}
+
+footer {
+    padding-top: 32px;
+    padding-bottom: 16px;
 }

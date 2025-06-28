@@ -5,32 +5,50 @@
     <title>Home – Chris Guimarin</title>
     <link rel="stylesheet" href="/assets/css/main.css" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicons/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicons/android-chrome-512x512.png">
+    <link rel="shortcut icon" href="/assets/favicons/favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&display=swap" rel="stylesheet">
   </head>
 
   <body>
-    <nav>
-      <ul>
-        <li><a href="/" aria-current="page">Home</a></li>
-        <li><a href="/design/" >Design</a></li>
-        <li><a href="/theater/" >Theater</a></li>
-        <li><a href="/projects/" >Projects</a></li>
-        <li><a href="/shelf/" >Shelf</a></li>
-        <li><a href="/about/" >About</a></li>
-        <!-- <li><a href="/contact/" >Contact</a></li> -->
-        <li>
-          <button 
-            id="theme-toggle" 
-            aria-label="Toggle dark mode"
-            title="Toggle dark mode">
-            <span class="theme-toggle-light">☀️</span>
-            <span class="theme-toggle-dark">🌙</span>
-          </button>
-        </li>
-      </ul>
-    </nav>
+    <div class="site-wrapper">
+      <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <main>
-      <h1>Hi, I'm Chris.</h1>
+      <nav>
+        <ul>
+          <li class="nav-link"><a href="/" aria-current="page">Home</a></li>
+          <li class="nav-link"><a href="/design/" >Design</a></li>
+          <li class="nav-link"><a href="/theater/" >Theater</a></li>
+          <li class="nav-link"><a href="/projects/" >Projects</a></li>
+          <li class="nav-link"><a href="/shelf/" >Shelf</a></li>
+          <li class="nav-link"><a href="/about/" >About</a></li>
+          <!-- Theme toggle and reset buttons do NOT get the nav-link class -->
+          <li class="theme-toggle-group" role="group" aria-label="Theme controls">
+            <button 
+              id="theme-toggle" 
+              aria-label="Toggle dark mode"
+              title="Toggle dark mode">
+              <span class="theme-toggle-light">☀️</span>
+              <span class="theme-toggle-dark">🌙</span>
+            </button>
+            <button
+              id="theme-reset"
+              aria-label="Reset theme to system default"
+              title="Reset theme to system default">
+              ♻️
+            </button>
+          </li>
+        </ul>
+      </nav>
+
+      <main id="main-content">
+        <h1>Hi, I'm Chris.</h1>
 <h2>Design Leader and Broadway Backer</h2>
 <p>Where imagination meets pragmatism.</p>
 <p>Millions of players rely on Battle.net every day. My team smooths their experience from the moment they log in to the final checkout screen. Behind the scenes we power the tools that support customer service teams, helping them respond with clarity and speed. For game developers we simplify integration with Battle.net. Whether they build immersive player features, seamless commerce flows, or resilient support systems, we clear the path. Off the clock, you’ll catch me volunteering on the board of NextGen Advocates, Broadway Cares’ young‐professionals network, soaking up fresh industry insight and scouting the next show that will send audiences leaping to their feet.</p>
@@ -42,14 +60,16 @@
 <li><a href="mailto:hello@chrisguimarin.com?subject=Hello%20Chris!">Email me</a></li>
 </ul>
 
-    </main>
+      </main>
 
-    <footer>
-      <p>© 2025 Chris Guimarin. All opinions my own.</p>
-    </footer>
+      <footer>
+        <p>© 2025 Chris Guimarin. All opinions my own.</p>
+      </footer>
+    </div>
 
     <script>
       const themeToggle = document.getElementById('theme-toggle');
+      const themeReset = document.getElementById('theme-reset');
       const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
 
       // Get theme from localStorage or system preference
@@ -62,6 +82,7 @@
       // Apply theme (optionally persist)
       const setTheme = (theme, persist = false) => {
         document.documentElement.setAttribute('data-theme', theme);
+        themeToggle.setAttribute('aria-pressed', theme === 'dark');
         if (persist) {
           localStorage.setItem('theme', theme);
         }
@@ -75,6 +96,12 @@
         const currentTheme = getTheme();
         const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
         setTheme(newTheme, true);
+      });
+
+      // Reset theme to system default
+      themeReset.addEventListener('click', () => {
+        localStorage.removeItem('theme');
+        setTheme(getTheme());
       });
 
       // Listen for system theme changes (only if no user override)
