@@ -8,40 +8,44 @@
   </head>
 
   <body>
-    <nav>
-      <ul>
-        <li class="nav-link"><a href="/" {% if page.url == "/" %}aria-current="page"{% endif %}>Home</a></li>
-        <li class="nav-link"><a href="/design/" {% if page.url == "/design/" %}aria-current="page"{% endif %}>Design</a></li>
-        <li class="nav-link"><a href="/theater/" {% if page.url == "/theater/" %}aria-current="page"{% endif %}>Theater</a></li>
-        <li class="nav-link"><a href="/projects/" {% if page.url == "/projects/" %}aria-current="page"{% endif %}>Projects</a></li>
-        <li class="nav-link"><a href="/shelf/" {% if page.url == "/shelf/" %}aria-current="page"{% endif %}>Shelf</a></li>
-        <li class="nav-link"><a href="/about/" {% if page.url == "/about/" %}aria-current="page"{% endif %}>About</a></li>
-        <!-- Theme toggle and reset buttons do NOT get the nav-link class -->
-        <li class="theme-toggle-group">
-          <button 
-            id="theme-toggle" 
-            aria-label="Toggle dark mode"
-            title="Toggle dark mode">
-            <span class="theme-toggle-light">☀️</span>
-            <span class="theme-toggle-dark">🌙</span>
-          </button>
-          <button
-            id="theme-reset"
-            aria-label="Reset theme to system default"
-            title="Reset theme to system default">
-            ♻️
-          </button>
-        </li>
-      </ul>
-    </nav>
+    <div class="site-wrapper">
+      <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <main>
-      {{ content | safe }}
-    </main>
+      <nav>
+        <ul>
+          <li class="nav-link"><a href="/" {% if page.url == "/" %}aria-current="page"{% endif %}>Home</a></li>
+          <li class="nav-link"><a href="/design/" {% if page.url == "/design/" %}aria-current="page"{% endif %}>Design</a></li>
+          <li class="nav-link"><a href="/theater/" {% if page.url == "/theater/" %}aria-current="page"{% endif %}>Theater</a></li>
+          <li class="nav-link"><a href="/projects/" {% if page.url == "/projects/" %}aria-current="page"{% endif %}>Projects</a></li>
+          <li class="nav-link"><a href="/shelf/" {% if page.url == "/shelf/" %}aria-current="page"{% endif %}>Shelf</a></li>
+          <li class="nav-link"><a href="/about/" {% if page.url == "/about/" %}aria-current="page"{% endif %}>About</a></li>
+          <!-- Theme toggle and reset buttons do NOT get the nav-link class -->
+          <li class="theme-toggle-group" role="group" aria-label="Theme controls">
+            <button 
+              id="theme-toggle" 
+              aria-label="Toggle dark mode"
+              title="Toggle dark mode">
+              <span class="theme-toggle-light">☀️</span>
+              <span class="theme-toggle-dark">🌙</span>
+            </button>
+            <button
+              id="theme-reset"
+              aria-label="Reset theme to system default"
+              title="Reset theme to system default">
+              ♻️
+            </button>
+          </li>
+        </ul>
+      </nav>
 
-    <footer>
-      <p>© 2025 Chris Guimarin. All opinions my own.</p>
-    </footer>
+      <main id="main-content">
+        {{ content | safe }}
+      </main>
+
+      <footer>
+        <p>© 2025 Chris Guimarin. All opinions my own.</p>
+      </footer>
+    </div>
 
     <script>
       const themeToggle = document.getElementById('theme-toggle');
@@ -58,6 +62,7 @@
       // Apply theme (optionally persist)
       const setTheme = (theme, persist = false) => {
         document.documentElement.setAttribute('data-theme', theme);
+        themeToggle.setAttribute('aria-pressed', theme === 'dark');
         if (persist) {
           localStorage.setItem('theme', theme);
         }

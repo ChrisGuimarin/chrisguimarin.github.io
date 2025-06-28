@@ -74,14 +74,36 @@
 /* ==========================================================================
    Base Styles
    ========================================================================== */
+html,
 body {
-    max-width: var(--max-content-width);
-    margin: 0 auto;
-    padding: var(--spacing-md);
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    /* Remove max-width, margin, and padding here */
     font-family: system-ui, sans-serif;
     line-height: 1.5;
     background-color: var(--color-bg);
     color: var(--color-text);
+}
+
+.site-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    max-width: var(--max-content-width);
+    margin: 0 auto;
+    padding: var(--spacing-sm);
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: system-ui, sans-serif;
+    line-height: 1.5;
+}
+
+main {
+    flex: 1;
 }
 
 h1 {
@@ -118,7 +140,7 @@ nav a:hover,
    ========================================================================== */
 /* Primary Navigation */
 nav {
-    margin-bottom: var(--spacing-md);
+    margin-bottom: 0px;
 }
 
 nav a {
@@ -370,9 +392,8 @@ nav a[aria-current="page"] {
     display: flex;
     align-items: center;
     position: relative;
-    /* Ensure group aligns with nav links */
-    height: 2.2em;
-    /* Match nav link height if needed */
+    /* Remove or comment out the next line: */
+    /* height: 2.2em; */
 }
 
 #theme-toggle,
@@ -394,7 +415,7 @@ nav a[aria-current="page"] {
     vertical-align: middle;
     /* Optional: tweak baseline alignment */
     position: relative;
-    top: -5px;
+    top: 0px;
 }
 
 #theme-reset {
@@ -413,4 +434,40 @@ nav a[aria-current="page"] {
 .theme-toggle-group:focus-within #theme-reset {
     visibility: visible;
     opacity: 1;
+}
+
+a:focus,
+button:focus {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+/* Visually hide skip link except when focused */
+.skip-link {
+    position: absolute;
+    left: -999px;
+    top: auto;
+    width: 0px;
+    height: 0px;
+    overflow: hidden;
+    z-index: 100;
+    background: #fff;
+    color: #000;
+    padding: 0.5em 1em;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.skip-link:focus {
+    left: 1rem;
+    top: 1rem;
+    width: auto;
+    height: auto;
+}
+
+footer {
+    padding-top: 32px;
+    padding-bottom: 16px;
 }

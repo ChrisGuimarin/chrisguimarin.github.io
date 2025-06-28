@@ -8,50 +8,54 @@
   </head>
 
   <body>
-    <nav>
-      <ul>
-        <li class="nav-link"><a href="/" >Home</a></li>
-        <li class="nav-link"><a href="/design/" >Design</a></li>
-        <li class="nav-link"><a href="/theater/" aria-current="page">Theater</a></li>
-        <li class="nav-link"><a href="/projects/" >Projects</a></li>
-        <li class="nav-link"><a href="/shelf/" >Shelf</a></li>
-        <li class="nav-link"><a href="/about/" >About</a></li>
-        <!-- Theme toggle and reset buttons do NOT get the nav-link class -->
-        <li class="theme-toggle-group">
-          <button 
-            id="theme-toggle" 
-            aria-label="Toggle dark mode"
-            title="Toggle dark mode">
-            <span class="theme-toggle-light">☀️</span>
-            <span class="theme-toggle-dark">🌙</span>
-          </button>
-          <button
-            id="theme-reset"
-            aria-label="Reset theme to system default"
-            title="Reset theme to system default">
-            ♻️
-          </button>
-        </li>
-      </ul>
-    </nav>
+    <div class="site-wrapper">
+      <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <main>
-      <h1>Theater</h1>
+      <nav>
+        <ul>
+          <li class="nav-link"><a href="/" >Home</a></li>
+          <li class="nav-link"><a href="/design/" >Design</a></li>
+          <li class="nav-link"><a href="/theater/" aria-current="page">Theater</a></li>
+          <li class="nav-link"><a href="/projects/" >Projects</a></li>
+          <li class="nav-link"><a href="/shelf/" >Shelf</a></li>
+          <li class="nav-link"><a href="/about/" >About</a></li>
+          <!-- Theme toggle and reset buttons do NOT get the nav-link class -->
+          <li class="theme-toggle-group" role="group" aria-label="Theme controls">
+            <button 
+              id="theme-toggle" 
+              aria-label="Toggle dark mode"
+              title="Toggle dark mode">
+              <span class="theme-toggle-light">☀️</span>
+              <span class="theme-toggle-dark">🌙</span>
+            </button>
+            <button
+              id="theme-reset"
+              aria-label="Reset theme to system default"
+              title="Reset theme to system default">
+              ♻️
+            </button>
+          </li>
+        </ul>
+      </nav>
+
+      <main id="main-content">
+        <h1>Theater</h1>
 <p>I back shows that nudge the art form forward. From Broadway debuts to experimental workshops, I look for stories that spark conversation and broaden who feels seen onstage.</p>
 <h2>Recent Involvements</h2>
 <div class="theater-wrapper">
-    <img class="theater-wrapper__img" src="/assets/images/theater/Real-Women-Have-Curves-Playbill-2025-04-01_Web.jpg" alt="Real Women Have Curves Playbill"  >
+    <img class="theater-wrapper__img" src="/assets/images/theater/Real-Women-Have-Curves-Playbill-2025-04-01_Web.jpg" alt="Playbill cover for Real Women Have Curves: The Musical">
 </div>
 <ul>
 <li>Real Women Have Curves (investor, 2025)</li>
 </ul>
 <p>Have a project that needs a champion? <a href="mailto:hello@chrisguimarin.com?subject=Theater%20Project">Let's grab coffee</a>.</p>
 
-    </main>
+      </main>
 
-    <footer>
-      <p>© 2025 Chris Guimarin. All opinions my own.</p>
-    </footer>
+      <footer>
+        <p>© 2025 Chris Guimarin. All opinions my own.</p>
+      </footer>
+    </div>
 
     <script>
       const themeToggle = document.getElementById('theme-toggle');
@@ -68,6 +72,7 @@
       // Apply theme (optionally persist)
       const setTheme = (theme, persist = false) => {
         document.documentElement.setAttribute('data-theme', theme);
+        themeToggle.setAttribute('aria-pressed', theme === 'dark');
         if (persist) {
           localStorage.setItem('theme', theme);
         }

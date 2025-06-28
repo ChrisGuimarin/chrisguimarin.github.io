@@ -8,44 +8,48 @@
   </head>
 
   <body>
-    <nav>
-      <ul>
-        <li class="nav-link"><a href="/" >Home</a></li>
-        <li class="nav-link"><a href="/design/" >Design</a></li>
-        <li class="nav-link"><a href="/theater/" >Theater</a></li>
-        <li class="nav-link"><a href="/projects/" aria-current="page">Projects</a></li>
-        <li class="nav-link"><a href="/shelf/" >Shelf</a></li>
-        <li class="nav-link"><a href="/about/" >About</a></li>
-        <!-- Theme toggle and reset buttons do NOT get the nav-link class -->
-        <li class="theme-toggle-group">
-          <button 
-            id="theme-toggle" 
-            aria-label="Toggle dark mode"
-            title="Toggle dark mode">
-            <span class="theme-toggle-light">☀️</span>
-            <span class="theme-toggle-dark">🌙</span>
-          </button>
-          <button
-            id="theme-reset"
-            aria-label="Reset theme to system default"
-            title="Reset theme to system default">
-            ♻️
-          </button>
-        </li>
-      </ul>
-    </nav>
+    <div class="site-wrapper">
+      <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <main>
-      <h1>Projects</h1>
+      <nav>
+        <ul>
+          <li class="nav-link"><a href="/" >Home</a></li>
+          <li class="nav-link"><a href="/design/" >Design</a></li>
+          <li class="nav-link"><a href="/theater/" >Theater</a></li>
+          <li class="nav-link"><a href="/projects/" aria-current="page">Projects</a></li>
+          <li class="nav-link"><a href="/shelf/" >Shelf</a></li>
+          <li class="nav-link"><a href="/about/" >About</a></li>
+          <!-- Theme toggle and reset buttons do NOT get the nav-link class -->
+          <li class="theme-toggle-group" role="group" aria-label="Theme controls">
+            <button 
+              id="theme-toggle" 
+              aria-label="Toggle dark mode"
+              title="Toggle dark mode">
+              <span class="theme-toggle-light">☀️</span>
+              <span class="theme-toggle-dark">🌙</span>
+            </button>
+            <button
+              id="theme-reset"
+              aria-label="Reset theme to system default"
+              title="Reset theme to system default">
+              ♻️
+            </button>
+          </li>
+        </ul>
+      </nav>
+
+      <main id="main-content">
+        <h1>Projects</h1>
 <p>I learn by tinkering. This page is where proofs of concept live until they grow into something bigger.</p>
 <p>“Toys are not really as innocent as they look. Toys and games are the preludes to serious ideas.” - Charles Eames</p>
 <p>Follow along or <a href="mailto:hello@chrisguimarin.com?subject=Project%20Collaboration">pitch a collaboration</a>. My inbox is open.</p>
 
-    </main>
+      </main>
 
-    <footer>
-      <p>© 2025 Chris Guimarin. All opinions my own.</p>
-    </footer>
+      <footer>
+        <p>© 2025 Chris Guimarin. All opinions my own.</p>
+      </footer>
+    </div>
 
     <script>
       const themeToggle = document.getElementById('theme-toggle');
@@ -62,6 +66,7 @@
       // Apply theme (optionally persist)
       const setTheme = (theme, persist = false) => {
         document.documentElement.setAttribute('data-theme', theme);
+        themeToggle.setAttribute('aria-pressed', theme === 'dark');
         if (persist) {
           localStorage.setItem('theme', theme);
         }
