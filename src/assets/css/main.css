@@ -137,7 +137,7 @@ nav ul {
     gap: var(--spacing-xs);
 }
 
-nav li:not(:last-child)::after {
+nav li.nav-link+li.nav-link::after {
     content: "/";
     margin-left: var(--spacing-xs);
     color: var(--color-text-muted);
@@ -364,4 +364,53 @@ nav a[aria-current="page"] {
 
 [data-theme='dark'] .theme-toggle-dark {
     display: none;
+}
+
+.theme-toggle-group {
+    display: flex;
+    align-items: center;
+    position: relative;
+    /* Ensure group aligns with nav links */
+    height: 2.2em;
+    /* Match nav link height if needed */
+}
+
+#theme-toggle,
+#theme-reset {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    line-height: 1;
+    vertical-align: middle;
+}
+
+#theme-toggle span,
+#theme-reset {
+    line-height: 1;
+    vertical-align: middle;
+    /* Optional: tweak baseline alignment */
+    position: relative;
+    top: -5px;
+}
+
+#theme-reset {
+    visibility: hidden;
+    opacity: 0;
+    margin-left: 0.5em;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    align-items: center;
+    transition: opacity 0.2s;
+}
+
+.theme-toggle-group:hover #theme-reset,
+.theme-toggle-group:focus-within #theme-reset {
+    visibility: visible;
+    opacity: 1;
 }
