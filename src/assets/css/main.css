@@ -19,7 +19,7 @@
     --container-padding: var(--spacing-md);
 
     /* Typography */
-    --font-family-base: system-ui, -apple-system, sans-serif;
+    --font-family-base: 'Nunito Sans', system-ui, -apple-system, sans-serif;
     --line-height-base: 1.5;
     --font-size-small: 0.9rem;
 
@@ -89,6 +89,11 @@ body {
     color: var(--color-text);
 }
 
+body,
+.site-wrapper {
+    font-family: var(--font-family-base);
+}
+
 .site-wrapper {
     min-height: 100vh;
     display: flex;
@@ -98,7 +103,8 @@ body {
     padding: var(--spacing-sm);
     background-color: var(--color-bg);
     color: var(--color-text);
-    font-family: system-ui, sans-serif;
+    font-family: var(--font-family-base);
+    /* <-- use the variable here */
     line-height: 1.5;
 }
 
