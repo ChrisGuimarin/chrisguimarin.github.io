@@ -178,12 +178,32 @@ nav a[aria-current="page"] {
 /* Mobile Navigation: horizontal scroll (inspired by dame.is) */
 @media (max-width: var(--breakpoint-lg)) {
     nav {
+        /* horizontal scroll behavior */
+        --nav-fade: 16px; /* edge fade width */
         overflow-x: auto;
         overflow-y: hidden;
         -webkit-overflow-scrolling: touch;
         overscroll-behavior-x: contain;
         touch-action: pan-x;
         scrollbar-gutter: stable;
+        padding: 0 var(--spacing-xs);
+        position: relative;
+
+        /* subtle edge fades using masks; keeps scrollbar visible */
+        -webkit-mask-image: linear-gradient(
+          to right,
+          transparent 0,
+          black var(--nav-fade),
+          black calc(100% - var(--nav-fade)),
+          transparent 100%
+        );
+        mask-image: linear-gradient(
+          to right,
+          transparent 0,
+          black var(--nav-fade),
+          black calc(100% - var(--nav-fade)),
+          transparent 100%
+        );
     }
 
     /* Make the list size to its content so the container can scroll */
