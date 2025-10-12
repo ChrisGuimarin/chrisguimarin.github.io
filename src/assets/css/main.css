@@ -175,6 +175,32 @@ nav a[aria-current="page"] {
     font-weight: bold;
 }
 
+/* Mobile Navigation: horizontal scroll (inspired by dame.is) */
+@media (max-width: var(--breakpoint-lg)) {
+    nav {
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior-x: contain;
+        touch-action: pan-x;
+        scrollbar-gutter: stable;
+    }
+
+    /* Make the list size to its content so the container can scroll */
+    nav ul {
+        display: inline-flex;
+        gap: var(--spacing-xs);
+        white-space: nowrap;
+        min-width: max-content;
+        padding-bottom: 0.25rem; /* avoid scrollbar overlaying text on some browsers */
+    }
+
+    /* Prevent items from shrinking so separators stay consistent */
+    nav li {
+        flex: 0 0 auto;
+    }
+}
+
 /* Secondary Navigation */
 .sub-nav {
     margin-bottom: var(--spacing-md);
