@@ -470,7 +470,7 @@ nav a[aria-current="page"] {
     border-radius: var(--border-radius);
     margin: var(--spacing-sm) var(--spacing-md) var(--spacing-sm) 0;
 }
-@media (max-width: 500px) {
+@media (max-width: 600px) {
     .about-intro {
         display: block;
         overflow: visible;
