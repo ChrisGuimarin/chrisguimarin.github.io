@@ -1,6 +1,7 @@
 /* Import Base Styles */
 @import "breakpoints.css";
 @import "theme.css";
+@import "sentient.css";
 
 /* Import Components */
 @import "components/nav.css";
@@ -57,7 +58,7 @@
 @media (prefers-color-scheme: dark) {
     :root:not([data-theme='light']) {
         --color-bg: #1a1a1a;
-        --color-text: #ffffff;
+        --color-text: #F8F8FF;
         --color-text-muted: #a0a0a0;
         --color-primary: #4da8da;
         --color-border: #333333;
@@ -66,7 +67,7 @@
 
 [data-theme='dark'] {
     --color-bg: #1a1a1a;
-    --color-text: #ffffff;
+    --color-text: #F8F8FF;
     --color-text-muted: #a0a0a0;
     --color-primary: #4da8da;
     --color-border: #333333;
@@ -114,7 +115,15 @@ main {
 }
 
 h1 {
+    font-family: 'Sentient-Variable', 'Sentient-Bold', serif;
     color: var(--color-primary);
+    font-weight: 700;
+}
+
+h2 {
+    font-family: 'Sentient-VariableItalic', 'Sentient-RegularItalic', serif;
+    font-weight: 300;
+    font-style: italic;
 }
 
 /* Base link styles */
@@ -585,8 +594,8 @@ button:focus {
     height: 0px;
     overflow: hidden;
     z-index: 100;
-    background: #fff;
-    color: #000;
+    background: var(--color-bg);
+    color: var(--color-text);
     padding: 0.5em 1em;
     border-radius: 4px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);

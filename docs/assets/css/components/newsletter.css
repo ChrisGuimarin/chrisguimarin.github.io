@@ -27,7 +27,7 @@
     grid-column: 1;
     margin-top: 0;
     margin-bottom: 0;
-    color: var(--color-text-muted);
+    color: var(--color-text);
     line-height: var(--line-height-base);
 }
 
@@ -86,7 +86,7 @@
     border: none;
     border-radius: var(--border-radius);
     background-color: var(--color-primary);
-    color: #ffffff;
+    color: var(--color-bg);
     font-family: var(--font-family-base);
     font-size: 1rem;
     font-weight: 700;
