@@ -376,7 +376,7 @@ nav a[aria-current="page"] {
     grid-column: 1;
     margin-top: 0;
     margin-bottom: 0;
-    color: var(--color-text-muted);
+    color: var(--color-text);
     line-height: var(--line-height-base);
 }
 .newsletter-form {
