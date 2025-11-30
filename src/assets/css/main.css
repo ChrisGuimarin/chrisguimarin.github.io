@@ -6,6 +6,7 @@
 @import "components/nav.css";
 @import "components/book.css";
 @import "components/theater.css";
+@import "components/newsletter.css";
 
 
 
@@ -604,3 +605,4 @@ footer {
     padding-top: 32px;
     padding-bottom: 16px;
 }
+
