@@ -1,0 +1,9 @@
+<img 
+    src="{{ src }}" 
+    alt="{{ alt }}"
+    {% if loading %}loading="{{ loading }}"{% else %}loading="lazy"{% endif %}
+    decoding="async"
+    {% if class %}class="{{ class }}"{% endif %}
+    {% if srcset %}srcset="{{ srcset }}"{% endif %}
+    {% if sizes %}sizes="{{ sizes }}"{% endif %}
+>
