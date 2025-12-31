@@ -6,7 +6,6 @@ description: Essays, notes, and the books I keep handing to friends, all in one 
 
 # Shelf
 
-## Latest Writing
 {% if collections.writing %}
     {% for post in collections.writing | reverse %}
     - [{{ post.data.title }}]({{ post.url }}) - {{ post.date | dateReadable }}
@@ -28,5 +27,3 @@ Books are my favorite continuing-education program. Below are the titles I keep 
 ## Design Legends & Visual Inspiration
 {% assign visualBooks = collections.books | byCategory: "Design Legends & Visual Inspiration" %}
 {% render "book-grid.njk", books: visualBooks %}
-
-Want more nerdy ramblings? [Email me](mailto:hello@chrisguimarin.com?subject=Shelf%20Question).
