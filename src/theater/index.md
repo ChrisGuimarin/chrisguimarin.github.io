@@ -11,7 +11,7 @@ I back shows that nudge the art form forward. From Broadway debuts to experiment
 ## Recent Involvements
 
 <div class="theater-wrapper">
-    <img class="theater-wrapper__img" src="/assets/images/theater/Real-Women-Have-Curves-Playbill-2025-04-01_Web.jpg" alt="Playbill cover for Real Women Have Curves: The Musical">
+    <img class="theater-wrapper__img" src="/assets/images/theater/Real-Women-Have-Curves-Playbill-2025-04-01_Web.jpg" alt="Playbill cover for Real Women Have Curves: The Musical" loading="lazy" decoding="async">
 </div>
 
 - Real Women Have Curves (investor, 2025)
