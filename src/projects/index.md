@@ -12,4 +12,3 @@ I learn by tinkering. This page is where proofs of concept live until they grow 
 
 
 
-Follow along or [pitch a collaboration](mailto:hello@chrisguimarin.com?subject=Project%20Collaboration). My inbox is open.

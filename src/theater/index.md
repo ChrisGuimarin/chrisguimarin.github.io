@@ -17,4 +17,3 @@ I back shows that nudge the art form forward. From Broadway debuts to experiment
 - Real Women Have Curves (investor, 2025)
 
 
-Have a project that needs a champion? [Let's grab coffee](mailto:hello@chrisguimarin.com?subject=Theater%20Project).

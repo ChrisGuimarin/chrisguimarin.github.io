@@ -15,4 +15,4 @@ Outside games I co-founded Currant Productions and invest in shows like Real Wom
 </div>
 
 
-Curious about Broadway investing, product design, or making creative ideas real? [Email me](mailto:hello@chrisguimarin.com?subject=Hello%20Chris!), connect on [LinkedIn](https://www.linkedin.com/in/chrisguimarin), follow on [Instagram](https://www.instagram.com/chrisguimarin/), or subscribe to my newsletter for first-look updates.
+Curious about Broadway investing, product design, or making creative ideas real?
