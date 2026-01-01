@@ -42,12 +42,19 @@ for (const viewport of viewports) {
         );
       });
       
+      // Wait for fonts to load
+      await playwrightPage.evaluate(() => document.fonts.ready);
+      
+      // Additional wait for any layout shifts
+      await playwrightPage.waitForTimeout(500);
+      
       // Take full page screenshot and compare
       await expect(playwrightPage).toHaveScreenshot(
         `${page.name}-${viewport.name}.png`,
         {
           fullPage: true,
           animations: 'disabled',
+          timeout: 10000,
         }
       );
     });
