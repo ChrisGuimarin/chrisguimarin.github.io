@@ -18,7 +18,7 @@ layout: false
     <author>
         <name>Chris Guimarin</name>
     </author>
-    {%- for post in collections.writing | reverse | slice(0, 20) %}
+    {% for post in collections.writing | reverse %}
     <entry>
         <title>{{ post.data.title }}</title>
         <link href="{{ post.url | absoluteUrl(site.url or 'https://chrisguimarin.com') }}"/>
