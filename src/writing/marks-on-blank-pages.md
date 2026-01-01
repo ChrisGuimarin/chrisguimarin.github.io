@@ -18,7 +18,7 @@ The story mattered: working-class Latina immigrant women trying to achieve the A
 
 I will always remember the standing ovations night after night. The sound filling the room. The joy on faces. The energy in how people stood. I am so proud to have invested with family and friends and it all started with a friendship: Jack Noseworthy, the co-lead producer, who opened the door.
 
-Now when the cast album plays, that feeling comes back. _Entertainment Weekly_ ranked it #6 on their "Best of Broadway" Top Ten list, and people are still resonating with it. **[You can read more here.](https://ew.com/the-10-best-broadway-shows-of-2025-and-3-worst-11857578)**
+Now when the cast album plays, those feelings comes back. _Entertainment Weekly_ ranked it #6 on their "Best of Broadway" Top Ten list, and people are still resonating with it. **[You can read more here.](https://ew.com/the-10-best-broadway-shows-of-2025-and-3-worst-11857578)**
 
 [Listen on Apple Music →](https://music.apple.com/us/album/real-women-have-curves-the-musical-original-broadway/1813395457)
 
