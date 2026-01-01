@@ -42,19 +42,12 @@ for (const viewport of viewports) {
         );
       });
       
-      // Extra wait for shelf page (many images)
-      if (page.name === 'shelf') {
-        await playwrightPage.waitForTimeout(1000);
-      }
-
       // Take full page screenshot and compare
       await expect(playwrightPage).toHaveScreenshot(
         `${page.name}-${viewport.name}.png`,
         {
           fullPage: true,
           animations: 'disabled',
-          // Allow minor differences for pages with many images
-          maxDiffPixelRatio: page.name === 'shelf' ? 0.02 : undefined,
         }
       );
     });
