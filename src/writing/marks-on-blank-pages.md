@@ -18,13 +18,11 @@ The story mattered: working-class Latina immigrant women trying to achieve the A
 
 I will always remember the standing ovations night after night. The sound filling the room. The joy on faces. The energy in how people stood. I am so proud to have invested with family and friends and it all started with a friendship: Jack Noseworthy, the co-lead producer, who opened the door.
 
-Now when the cast album plays, those feelings comes back. _Entertainment Weekly_ ranked it #6 on their "Best of Broadway" Top Ten list, and people are still resonating with it. **[You can read more here.](https://ew.com/the-10-best-broadway-shows-of-2025-and-3-worst-11857578)**
-
-[Listen on Apple Music →](https://music.apple.com/us/album/real-women-have-curves-the-musical-original-broadway/1813395457)
+Now when the cast album plays, those feelings comes back. _Entertainment Weekly_ ranked it #6 on their "Best of Broadway" Top Ten list, and people are still resonating with it. [Read more in Entertainment Weekly →](https://ew.com/the-10-best-broadway-shows-of-2025-and-3-worst-11857578) and [Listen on Apple Music →](https://music.apple.com/us/album/real-women-have-curves-the-musical-original-broadway/1813395457)
 
 ## NextGen Spotlight sold out and raised over $20,000 for Broadway Cares.
 
-As the chair, I helped raise more than $500,000 together for Broadway Cares through the NextGen Network over the past few years. It's time to pass the torch on leadership, but I'll be staying on to produce Spotlight going forward. The lesson keeps proving itself: we stand taller in ensemble. **[Read more in Playbill →](https://playbill.com/article/this-years-nextgen-spotlight-raised-record-22-333-for-broadway-cares)**
+As the chair, I helped raise more than $500,000 together for Broadway Cares through the NextGen Network over the past few years. It's time to pass the torch on leadership, but I'll be staying on to produce Spotlight going forward. The lesson keeps proving itself: we stand taller in ensemble. [Read more in Playbill →](https://playbill.com/article/this-years-nextgen-spotlight-raised-record-22-333-for-broadway-cares)
 
 ## I taught myself to build for the web.
 
