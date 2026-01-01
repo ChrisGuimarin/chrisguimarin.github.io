@@ -29,6 +29,18 @@ for (const viewport of viewports) {
 
       // Wait for page to be fully loaded
       await playwrightPage.waitForLoadState('networkidle');
+      
+      // Wait for all images to load
+      await playwrightPage.evaluate(() => {
+        return Promise.all(
+          Array.from(document.images)
+            .filter(img => !img.complete)
+            .map(img => new Promise(resolve => {
+              img.addEventListener('load', resolve);
+              img.addEventListener('error', resolve);
+            }))
+        );
+      });
 
       // Take full page screenshot and compare
       await expect(playwrightPage).toHaveScreenshot(
