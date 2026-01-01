@@ -1,0 +1,17 @@
+{
+  "extends": "stylelint-config-standard",
+  "rules": {
+    "color-no-hex": [true, { "severity": "warning" }],
+    "font-family-no-missing-generic-family-keyword": null,
+    "declaration-property-value-disallowed-list": null,
+    "custom-property-pattern": "^[a-z][a-z0-9]*(-[a-z0-9]+)*$",
+    "selector-class-pattern": "^[a-z][a-z0-9]*(-[a-z0-9]+)*$",
+    "at-rule-no-unknown": [
+      true,
+      {
+        "ignoreAtRules": ["import"]
+      }
+    ],
+    "media-query-no-invalid": null
+  }
+}

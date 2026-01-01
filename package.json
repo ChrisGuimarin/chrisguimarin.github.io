@@ -5,7 +5,11 @@
   "main": "index.js",
   "scripts": {
     "start": "eleventy --serve",
-    "build": "eleventy"
+    "build": "eleventy",
+    "lint:css": "stylelint 'src/assets/css/**/*.css'",
+    "lint:css:fix": "stylelint 'src/assets/css/**/*.css' --fix",
+    "test:visual": "playwright test",
+    "test:visual:update": "playwright test --update-snapshots"
   },
   "repository": {
     "type": "git",
@@ -21,7 +25,11 @@
   "devDependencies": {
     "@11ty/eleventy": "^3.1.0",
     "@11ty/eleventy-plugin-rss": "^2.0.4",
+    "@playwright/test": "^1.57.0",
+    "http-server": "^14.1.1",
     "postcss": "^8.5.5",
-    "postcss-import": "^16.1.0"
+    "postcss-import": "^16.1.0",
+    "stylelint": "^16.26.1",
+    "stylelint-config-standard": "^39.0.1"
   }
 }

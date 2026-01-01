@@ -28,7 +28,7 @@
 .social-link svg {
     width: 1.5rem;
     height: 1.5rem;
-    fill: currentColor;
+    fill: currentcolor;
 }
 
 .social-link:hover {
@@ -59,7 +59,7 @@
 }
 
 /* Mobile: Use grid layout for consistent full-width buttons */
-@media (max-width: 500px) {
+@media (width <= 500px) {
     footer .social-links {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
