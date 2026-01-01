@@ -1,6 +1,7 @@
 /* ==========================================================================
    Theme Styles
    ========================================================================== */
+
 /* Dark theme colors */
 @media (prefers-color-scheme: dark) {
     :root:not([data-theme='light']) {
@@ -8,7 +9,7 @@
         --color-text: #F8F8FF;
         --color-text-muted: #a0a0a0;
         --color-primary: #4da8da;
-        --color-border: #333333;
+        --color-border: #333;
     }
 }
 
@@ -17,7 +18,7 @@
     --color-text: #F8F8FF;
     --color-text-muted: #a0a0a0;
     --color-primary: #4da8da;
-    --color-border: #333333;
+    --color-border: #333;
 }
 
 /* Theme Toggle Styles */

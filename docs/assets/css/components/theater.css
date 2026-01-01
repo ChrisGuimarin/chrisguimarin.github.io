@@ -1,14 +1,17 @@
 /* Theater Components */
 .theater-wrapper {
     max-width: 200px;
+
     /* updated cap moved from inline style */
     margin: var(--spacing-sm) 0;
 }
 
 .theater-wrapper img {
     width: 100%;
+
     /* Make image fill wrapper */
     max-width: 100%;
+
     /* ensures the image fills wrapper up to 200px */
     height: auto;
     border-radius: var(--border-radius);
