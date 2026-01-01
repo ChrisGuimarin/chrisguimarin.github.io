@@ -12,6 +12,9 @@ export default defineConfig({
     baseURL: 'http://localhost:8080',
     trace: 'on-first-retry',
   },
+  
+  // Use platform-agnostic snapshot paths
+  snapshotPathTemplate: '{testDir}/{testFileDir}/{testFileName}-snapshots/{arg}{ext}',
 
   projects: [
     {

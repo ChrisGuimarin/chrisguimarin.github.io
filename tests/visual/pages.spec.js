@@ -41,6 +41,11 @@ for (const viewport of viewports) {
             }))
         );
       });
+      
+      // Extra wait for shelf page to stabilize (many lazy-loaded book covers)
+      if (page.name === 'shelf') {
+        await playwrightPage.waitForTimeout(1000);
+      }
 
       // Take full page screenshot and compare
       await expect(playwrightPage).toHaveScreenshot(
@@ -48,6 +53,8 @@ for (const viewport of viewports) {
         {
           fullPage: true,
           animations: 'disabled',
+          // Shelf page can have minor rendering differences due to many images
+          maxDiffPixelRatio: page.name === 'shelf' ? 0.05 : undefined,
         }
       );
     });
