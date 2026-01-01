@@ -55,7 +55,3 @@ Change isn't one big leap. It's the accumulation of showing up, the code commits
 To more of it.
 
 Chris
-
----
-
-P.S. If this resonated, send it to someone who might like it. Or just reply and say hi—I'd love to hear from you.
