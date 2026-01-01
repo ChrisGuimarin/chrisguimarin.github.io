@@ -38,7 +38,7 @@ Still early. Taking courses, figuring out how design becomes strategic counsel. 
 
 Taking more photos. Flowers, nature, life's moments. See below, a lily pad on a garden walk with Vincent and friends at the Madoo Conservancy. A sliver of time, captured.
 
-![Lily pad and pink water lily at Madoo Conservancy](/assets/images/IDG_20250913_113251_423.jpg)
+![Lily pad and pink water lily at Madoo Conservancy](/assets/images/madoo-lily-pad.jpg)
 
 ---
 
