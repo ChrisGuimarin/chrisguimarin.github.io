@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title>Chris Guimarin – Writing</title>
+    <subtitle>Essays, notes, and explorations from the intersection of design, technology, and leadership</subtitle>
+    <link href="https://chrisguimarin.com/writing/feed.xml" rel="self"/>
+    <link href="https://chrisguimarin.com/writing/"/>
+    
+    <updated>2025-01-01T00:00:00Z</updated>
+    
+    <id>https://chrisguimarin.com/writing/</id>
+    <author>
+        <name>Chris Guimarin</name>
+    </author>
+</feed>

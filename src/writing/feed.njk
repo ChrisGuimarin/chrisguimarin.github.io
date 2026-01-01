@@ -1,0 +1,30 @@
+---
+permalink: /writing/feed.xml
+eleventyExcludeFromCollections: true
+layout: false
+---
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title>Chris Guimarin – Writing</title>
+    <subtitle>Essays, notes, and explorations from the intersection of design, technology, and leadership</subtitle>
+    <link href="{{ '/writing/feed.xml' | absoluteUrl(site.url or 'https://chrisguimarin.com') }}" rel="self"/>
+    <link href="{{ '/writing/' | absoluteUrl(site.url or 'https://chrisguimarin.com') }}"/>
+    {% if collections.writing.length > 0 %}
+    <updated>{{ collections.writing | getNewestCollectionItemDate | dateToRfc3339 }}</updated>
+    {% else %}
+    <updated>2025-01-01T00:00:00Z</updated>
+    {% endif %}
+    <id>{{ '/writing/' | absoluteUrl(site.url or 'https://chrisguimarin.com') }}</id>
+    <author>
+        <name>Chris Guimarin</name>
+    </author>
+    {%- for post in collections.writing | reverse | slice(0, 20) %}
+    <entry>
+        <title>{{ post.data.title }}</title>
+        <link href="{{ post.url | absoluteUrl(site.url or 'https://chrisguimarin.com') }}"/>
+        <updated>{{ post.date | dateToRfc3339 }}</updated>
+        <id>{{ post.url | absoluteUrl(site.url or 'https://chrisguimarin.com') }}</id>
+        <content type="html">{{ post.templateContent | htmlToAbsoluteUrls(site.url or 'https://chrisguimarin.com') }}</content>
+    </entry>
+    {%- endfor %}
+</feed>

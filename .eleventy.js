@@ -1,7 +1,11 @@
 const postcss = require('postcss');
 const postcssImport = require('postcss-import');
+const pluginRss = require('@11ty/eleventy-plugin-rss');
 
 module.exports = function (eleventyConfig) {
+    // Add RSS plugin
+    eleventyConfig.addPlugin(pluginRss);
+
     // Pass through copy for assets
     eleventyConfig.addPassthroughCopy("src/assets");
 
@@ -46,7 +50,9 @@ module.exports = function (eleventyConfig) {
     });
 
     eleventyConfig.addCollection("writing", function (collectionApi) {
-        return collectionApi.getFilteredByGlob("src/writing/*.md");
+        return collectionApi.getFilteredByGlob("src/writing/*.md").filter(item => {
+            return !item.inputPath.includes('index.md');
+        });
     });
 
     eleventyConfig.addCollection("books", function (collectionApi) {

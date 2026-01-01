@@ -4,4 +4,5 @@ author: Walter Isaacson
 category: Leadership & Culture
 cover: /assets/images/shelf/steve-jobs.jpg
 link: https://bookshop.org/p/books/steve-jobs-walter-isaacson/16221490
+dateAdded: 2024-12-24
 ---

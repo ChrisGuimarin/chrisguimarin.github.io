@@ -6,10 +6,13 @@ description: Essays, notes, and the books I keep handing to friends, all in one 
 
 # Shelf
 
-{% if collections.writing %}
-    {% for post in collections.writing | reverse %}
+{% if collections.writing.length > 0 %}
+    {% for post in collections.writing | reverse | slice(0, 3) %}
     - [{{ post.data.title }}]({{ post.url }}) - {{ post.date | dateReadable }}
     {% endfor %}
+    {% if collections.writing.length > 3 %}
+    [View all writing →](/writing/)
+    {% endif %}
 {% else %}
     Writing coming soon.
 {% endif %}

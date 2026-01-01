@@ -1,0 +1,32 @@
+---
+permalink: /feed.xml
+eleventyExcludeFromCollections: true
+layout: false
+---
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title>Chris Guimarin</title>
+    <subtitle>Design, leadership, and the stage</subtitle>
+    <link href="{{ '/feed.xml' | absoluteUrl(site.url or 'https://chrisguimarin.com') }}" rel="self"/>
+    <link href="{{ '/' | absoluteUrl(site.url or 'https://chrisguimarin.com') }}"/>
+    <updated>{{ collections.all | getNewestCollectionItemDate | dateToRfc3339 }}</updated>
+    <id>{{ '/' | absoluteUrl(site.url or 'https://chrisguimarin.com') }}</id>
+    <author>
+        <name>Chris Guimarin</name>
+    </author>
+    {% for book in collections.books | reverse %}
+    <entry>
+        <title>📚 Added to shelf: {{ book.data.title }}</title>
+        <link href="{{ book.data.link }}"/>
+        <updated>{{ book.data.dateAdded }}T00:00:00Z</updated>
+        <id>{{ book.url | absoluteUrl(site.url or 'https://chrisguimarin.com') }}</id>
+        <content type="html"><![CDATA[
+            <p>Added <strong>{{ book.data.title }}</strong> by {{ book.data.author }} to my shelf.</p>
+            {% if book.data.cover %}
+            <p><img src="{{ book.data.cover | absoluteUrl(site.url or 'https://chrisguimarin.com') }}" alt="{{ book.data.title }} cover" style="max-width: 200px;"></p>
+            {% endif %}
+            <p><a href="{{ book.data.link }}">Find this book</a></p>
+        ]]></content>
+    </entry>
+    {% endfor %}
+</feed>
