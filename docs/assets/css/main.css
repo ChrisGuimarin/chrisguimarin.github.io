@@ -673,7 +673,14 @@ article img,
 main img {
     max-width: 100%;
     height: auto;
-    margin: var(--spacing-md) 0;
+    margin: var(--spacing-md) auto;
+    border-radius: var(--border-radius);
+}
+/* Ensure images in writing posts match text width */
+main article img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 /* Base link styles */
 a {
