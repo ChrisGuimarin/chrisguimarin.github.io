@@ -81,8 +81,21 @@ author: "Author Name"
 category: "Category Name"
 cover: /assets/images/shelf/book-cover.jpg
 link: https://bookshop.org/link
+dateAdded: 2025-01-15
 ---
 ```
+Note: `dateAdded` is required for RSS feed sorting.
+
+### Adding Writing Posts
+Create markdown files in `src/writing/` with frontmatter:
+```yaml
+---
+title: "Post Title"
+date: 2025-01-20
+excerpt: "Brief summary for feeds and listings"
+---
+```
+The `writing.json` file applies defaults (layout: post.njk, tags: writing, permalink).
 
 ### Adding Work Items
 Create markdown files in `src/work/` with frontmatter including `title`, `layout`, `date`, and `type`.
@@ -211,9 +224,41 @@ Identify test cases before implementing:
 9. **Verify**: Test in production environment
 10. **Document**: Update WARP.md or other docs as needed
 
+## RSS Feeds
+
+The site provides two RSS feeds using the @11ty/eleventy-plugin-rss plugin:
+
+### Feed URLs
+- **Unified Feed**: `/feed.xml` - Combined books and writing for RSS readers
+- **Writing Feed**: `/writing/feed.xml` - Writing posts only for Buttondown email automation
+
+### Feed Features
+- Book entries prefixed with "📚 Added to shelf:"
+- Books sorted by `dateAdded` field (reverse chronological)
+- Writing posts sorted by `date` field (reverse chronological)
+- Autodiscovery links in `<head>` for RSS reader detection
+- Valid Atom XML format
+
+### Buttondown Integration
+The writing-only feed (`/writing/feed.xml`) is configured for Buttondown email automation:
+1. In Buttondown → Settings → Automations
+2. Add automation: "Send email when RSS feed updates"
+3. URL: `https://chrisguimarin.com/writing/feed.xml`
+4. Set to "Draft" mode initially to review emails before sending
+
+This ensures that adding books to the shelf doesn't trigger emails, but publishing writing posts does.
+
+### Testing Feeds
+Run the verification script to test RSS implementation:
+```bash
+./verify-rss-feeds.sh
+```
+The script tests: build success, feed existence, XML validity, book prefixes, autodiscovery, shelf page structure, and writing index.
+
 ## Production Notes
 
 - The site outputs to `/docs` directory for GitHub Pages compatibility
 - CSS is processed and concatenated through PostCSS
 - All assets are copied to output directory
 - The site includes proper meta tags, favicons, and accessibility features
+- RSS feeds are generated at build time and deployed with the site
