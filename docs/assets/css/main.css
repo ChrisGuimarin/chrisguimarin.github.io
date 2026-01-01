@@ -663,6 +663,18 @@ h2 {
     font-weight: 300;
     font-style: italic;
 }
+/* Images */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+article img,
+main img {
+    max-width: 100%;
+    height: auto;
+    margin: var(--spacing-md) 0;
+}
 /* Base link styles */
 a {
     color: var(--color-primary);
