@@ -172,6 +172,10 @@ Identify test cases before implementing:
 - Check for console errors or build warnings
 - Test in multiple browsers if UI changes are involved
 - Validate external integrations (RSS feeds, forms, etc.)
+- **Run CSS linting**: `npm run lint:css` to check for CSS issues
+- **Run visual regression tests**: `npm run test:visual` to catch UI changes
+- **Review visual diffs**: If visual tests fail, check `test-results/` for diff images
+- **Update baselines if intentional**: Use `npm run test:visual:update` only for deliberate UI changes
 - **Create verification scripts when appropriate:**
   - For complex features, create bash scripts to automate testing (e.g., `verify-*.sh`)
   - Script should test all acceptance criteria with pass/fail reporting
@@ -255,6 +259,154 @@ Run the verification script to test RSS implementation:
 ```
 The script tests: build success, feed existence, XML validity, book prefixes, autodiscovery, shelf page structure, and writing index.
 
+## CSS Consistency and Linting
+
+The site uses Stylelint to enforce CSS consistency and best practices.
+
+### Stylelint Configuration
+Configuration file: `.stylelintrc.json`
+- Extends `stylelint-config-standard` for baseline rules
+- Enforces kebab-case for class and custom property names
+- Warns about hardcoded hex colors (use CSS variables instead)
+- Ignores `@import` rules for PostCSS compatibility
+
+### Running Stylelint
+```bash
+npm run lint:css          # Check CSS for issues
+npm run lint:css:fix      # Auto-fix issues where possible
+```
+
+### CSS Best Practices
+- **Use CSS variables** for colors, spacing, and fonts defined in `:root`
+- **Create modular components** in `src/assets/css/components/` for new features
+- **Import components** in `src/assets/css/main.css` using `@import`
+- **Follow naming conventions**: kebab-case for classes (e.g., `.writing-item-title`)
+- **Use existing spacing variables**: `--spacing-xs`, `--spacing-sm`, `--spacing-md`, `--spacing-lg`
+- **Use color variables**: `--color-primary`, `--color-text`, `--color-text-muted`, `--color-border`
+
+### Creating New CSS Components
+1. Create new file in `src/assets/css/components/[component-name].css`
+2. Use CSS custom properties from `:root` for all values
+3. Add responsive behavior with existing breakpoints
+4. Import in `src/assets/css/main.css` with `@import "components/[component-name].css";`
+5. Run `npm run lint:css` to check for issues
+6. Build site to verify: `npm run build`
+
+Example component structure:
+```css
+/* Component-specific styles */
+.component-name {
+    margin: var(--spacing-md);
+    color: var(--color-text);
+}
+
+/* Mobile responsive */
+@media (max-width: 500px) {
+    .component-name {
+        margin: var(--spacing-sm);
+    }
+}
+```
+
+## Visual Regression Testing
+
+The site uses Playwright for visual regression testing to catch unintended UI changes.
+
+### Test Configuration
+Configuration file: `playwright.config.js`
+- Tests built site in `/docs` directory
+- Uses http-server to serve site locally on port 8080
+- Tests Chromium browser (can be extended to Firefox/WebKit)
+- Baseline screenshots stored in `tests/visual/pages.spec.js-snapshots/`
+
+### Running Visual Tests
+```bash
+npm run test:visual              # Run visual tests against baselines
+npm run test:visual:update       # Update baseline screenshots
+```
+
+### Test Coverage
+Tests capture screenshots of key pages across three viewports:
+- **Desktop**: 1400x900
+- **Tablet**: 800x1024
+- **Mobile**: 375x667
+
+Pages tested:
+- Homepage (`/`)
+- Shelf (`/shelf/`)
+- Writing index (`/writing/`)
+- About (`/about/`)
+- Theater (`/theater/`)
+- Projects (`/projects/`)
+
+### When to Update Baselines
+Update baselines when you intentionally change:
+- Layout or positioning
+- Colors or styling
+- Typography or spacing
+- Responsive behavior
+- Content that affects page height
+
+**Important**: Always review the diff images before updating baselines to ensure changes are intentional.
+
+### Visual Test Best Practices
+- **Build before testing**: Always run `npm run build` before visual tests
+- **Review diffs**: Check `test-results/` directory for diff images when tests fail
+- **Commit baselines**: Baseline screenshots in `tests/visual/pages.spec.js-snapshots/` must be committed to git
+- **CI will fail on mismatches**: GitHub Actions will catch visual regressions automatically
+
+## Verification Scripts
+
+The site includes verification scripts to test various aspects:
+
+### Available Scripts
+```bash
+./verify-rss-feeds.sh                # Test RSS feed implementation
+./verify-image-optimization.sh       # Test image optimization
+./verify-visual-consistency.sh       # Test visual consistency tools
+```
+
+All scripts:
+- Use colored output (GREEN ✓ / RED ✗ / YELLOW ⊘)
+- Exit with code 0 on success, 1 on failure
+- Can be run locally or in CI
+- Follow consistent format for easy reading
+
+### Visual Consistency Verification
+The `verify-visual-consistency.sh` script checks:
+1. Stylelint is installed
+2. Stylelint config exists
+3. Writing component CSS exists
+4. Writing CSS is imported
+5. Playwright is installed
+6. Playwright config exists
+7. Visual test files exist
+8. Baseline screenshots exist
+9. Stylelint passes (or only warnings)
+
+## Continuous Integration
+
+GitHub Actions workflow: `.github/workflows/visual-consistency.yml`
+
+The CI pipeline runs on all pushes and pull requests:
+
+### Pipeline Steps
+1. **Checkout code**
+2. **Setup Node.js** with npm caching
+3. **Install dependencies** (`npm ci`)
+4. **Build site** (`npm run build`)
+5. **Run CSS linting** (continue on error for warnings)
+6. **Install Playwright browsers**
+7. **Run visual regression tests**
+8. **Upload test artifacts** on failure (screenshots, diffs, reports)
+9. **Run verification scripts** (RSS, images, visual consistency)
+
+### CI Best Practices
+- **All tests must pass** before merging PRs
+- **Review test artifacts** if visual tests fail
+- **Update baselines carefully** only for intentional changes
+- **Monitor CI run time** and optimize if needed
+
 ## Production Notes
 
 - The site outputs to `/docs` directory for GitHub Pages compatibility
@@ -262,3 +414,4 @@ The script tests: build success, feed existence, XML validity, book prefixes, au
 - All assets are copied to output directory
 - The site includes proper meta tags, favicons, and accessibility features
 - RSS feeds are generated at build time and deployed with the site
+- Visual regression baselines are committed to ensure consistency across environments
