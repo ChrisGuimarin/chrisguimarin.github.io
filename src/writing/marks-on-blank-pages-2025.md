@@ -2,6 +2,7 @@
 title: "Marks on Blank Pages"
 date: 2026-01-02
 excerpt: "This year: a relaunched personal website, backed my first Broadway show, a promotion to Associate Director. Each one started as a mark on a blank page."
+permalink: "/writing/marks-on-blank-pages-2025/"
 ---
 
 This year: a relaunched personal website, backed my first Broadway show, a promotion to Associate Director. Each one started as a mark on a blank page.
