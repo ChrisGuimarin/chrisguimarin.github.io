@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Writing – Chris Guimarin</title>
+    <title>Test: Buttondown Automation – Chris Guimarin</title>
     <link rel="stylesheet" href="/assets/css/main.css" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
 
@@ -54,14 +54,38 @@
       </nav>
 
       <main id="main-content">
-        <h1>Writing</h1>
-<h2><a href="/writing/marks-on-blank-pages/">Marks on Blank Pages</a></h2>
-<p>December 31, 2025</p>
-<p>This year: a relaunched personal website, backed my first Broadway show, a promotion to Associate Director. Each one started as a mark on a blank page.</p>
-<h2><a href="/writing/test-buttondown-automation/">Test: Buttondown Automation</a></h2>
-<p>January 3, 2026</p>
-<p>This is a test post to verify Buttondown RSS automation is working correctly.</p>
+        
+<nav class="sub-nav">
+    <a href="/shelf/">← Back to Shelf</a>
+</nav>
 
+<article>
+    <h1>Test: Buttondown Automation</h1>
+    <time datetime="2026-01-03T00:00:00.000Z">January 3, 2026</time>
+    
+    <p>This is a <strong>test post</strong> to verify the Buttondown RSS automation is working correctly.</p>
+<h2>What to expect</h2>
+<p>If the automation is working:</p>
+<ul>
+<li>Buttondown should detect this post in the RSS feed</li>
+<li>A draft email should be created automatically</li>
+<li>The draft should contain this full content</li>
+</ul>
+<h2>Test checklist</h2>
+<ul>
+<li>[ ] Post appears in RSS feed at <code>/writing/feed.xml</code></li>
+<li>[ ] Buttondown detects the new item</li>
+<li>[ ] Draft is created (not marked as irrelevant)</li>
+<li>[ ] Draft contains the full post content</li>
+</ul>
+<hr>
+<p><strong>This is a test post.</strong> You can safely delete this post and the corresponding draft after verifying the automation works.</p>
+<p>To disable this test post temporarily (remove from feed without deleting), add this to the frontmatter:</p>
+<pre><code>eleventyExcludeFromCollections: true
+</code></pre>
+<p>To completely remove it, just delete the file <code>src/writing/test-automation.md</code>.</p>
+
+</article>
       </main>
 
       <section class="newsletter-section">
