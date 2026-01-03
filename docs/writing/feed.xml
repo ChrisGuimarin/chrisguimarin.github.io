@@ -5,42 +5,13 @@
     <link href="https://chrisguimarin.com/writing/feed.xml" rel="self"/>
     <link href="https://chrisguimarin.com/writing/"/>
     
-    <updated>2026-01-03T00:00:00Z</updated>
+    <updated>2025-12-31T00:00:00Z</updated>
     
     <id>https://chrisguimarin.com/writing/</id>
     <author>
         <name>Chris Guimarin</name>
     </author>
     
-    <entry>
-        <title>Test: Buttondown Automation</title>
-        <link href="https://chrisguimarin.com/writing/test-buttondown-automation/"/>
-        <updated>2026-01-03T00:00:00Z</updated>
-        <published>2026-01-03T00:00:00Z</published>
-        <id>https://chrisguimarin.com/writing/test-buttondown-automation/</id>
-        <content type="html">&lt;p&gt;This is a &lt;strong&gt;test post&lt;/strong&gt; to verify the Buttondown RSS automation is working correctly.&lt;/p&gt;
-&lt;h2&gt;What to expect&lt;/h2&gt;
-&lt;p&gt;If the automation is working:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Buttondown should detect this post in the RSS feed&lt;/li&gt;
-&lt;li&gt;A draft email should be created automatically&lt;/li&gt;
-&lt;li&gt;The draft should contain this full content&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;Test checklist&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;[ ] Post appears in RSS feed at &lt;code&gt;/writing/feed.xml&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;[ ] Buttondown detects the new item&lt;/li&gt;
-&lt;li&gt;[ ] Draft is created (not marked as irrelevant)&lt;/li&gt;
-&lt;li&gt;[ ] Draft contains the full post content&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr /&gt;
-&lt;p&gt;&lt;strong&gt;This is a test post.&lt;/strong&gt; You can safely delete this post and the corresponding draft after verifying the automation works.&lt;/p&gt;
-&lt;p&gt;To disable this test post temporarily (remove from feed without deleting), add this to the frontmatter:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;eleventyExcludeFromCollections: true
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;To completely remove it, just delete the file &lt;code&gt;src/writing/test-automation.md&lt;/code&gt;.&lt;/p&gt;
-</content>
-    </entry>
     <entry>
         <title>Marks on Blank Pages</title>
         <link href="https://chrisguimarin.com/writing/marks-on-blank-pages/"/>
