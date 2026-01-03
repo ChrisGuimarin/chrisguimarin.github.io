@@ -238,13 +238,11 @@ nav a[aria-current="page"] {
         width: 100%;
         max-width: 100%;
         overflow-wrap: break-word;
-        overflow-wrap: break-word;
     }
     
     /* Better typography for mobile */
     h1, h2, h3, h4, h5, h6 {
         max-width: 100%;
-        overflow-wrap: break-word;
         overflow-wrap: break-word;
     }
     
@@ -256,7 +254,6 @@ nav a[aria-current="page"] {
     
     p {
         max-width: 100%;
-        overflow-wrap: break-word;
         overflow-wrap: break-word;
     }
 
@@ -275,7 +272,7 @@ nav a[aria-current="page"] {
         position: relative;
 
         /* subtle edge fades using masks; keeps scrollbar visible */
-        mask-image: linear-gradient(
+        -webkit-mask-image: linear-gradient(
           to right,
           transparent 0,
           black var(--nav-fade),
