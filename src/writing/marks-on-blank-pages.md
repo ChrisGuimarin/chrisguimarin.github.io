@@ -12,7 +12,7 @@ Some became real things. Some are still becoming. All of them taught me somethin
 
 Leading design for Battle.net across accounts, checkout, game services, support, and developer platforms. Our team shipped meaningful updates to our paths to pay and play, plus hundreds of refinements that work so well players don't think about them. Which is the goal. Good design eases into the user's intent. That Edward Tufte line keeps proving itself: "Good design is a lot like clear thinking made visual."
 
-## Real Women Have Curves opened on Broadway.
+## Real Women Have Curves, the Musical opened on Broadway.
 
 The story mattered: working-class Latina immigrant women trying to achieve the American Dream, navigating dignity and belonging. Backing this show meant being part of something by helping creators realize their vision, watching performers make their Broadway debuts, and fulfilling my own dream of investing in my first show.
 
