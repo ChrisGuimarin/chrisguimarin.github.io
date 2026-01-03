@@ -4,7 +4,7 @@
     <subtitle>Design, leadership, and the stage</subtitle>
     <link href="https://chrisguimarin.com/feed.xml" rel="self"/>
     <link href="https://chrisguimarin.com/"/>
-    <updated>2026-01-03T00:02:02Z</updated>
+    <updated>2026-01-03T00:36:23Z</updated>
     <id>https://chrisguimarin.com/</id>
     <author>
         <name>Chris Guimarin</name>
@@ -95,20 +95,6 @@
     </entry>
     
     <entry>
-        <title>📚 Added to shelf: NASA Graphics Standards Manual</title>
-        <link href="https://standardsmanual.com/products/nasa-graphics-standards-manual"/>
-        <updated>Tue Nov 26 2024 00:00:00 GMT+0000 (Coordinated Universal Time)T00:00:00Z</updated>
-        <id>https://chrisguimarin.com/books/nasa-graphics-standards/</id>
-        <content type="html"><![CDATA[
-            <p>Added <strong>NASA Graphics Standards Manual</strong> by Richard Danne &amp; Bruce Blackburn to my shelf.</p>
-            
-            <p><img src="https://chrisguimarin.com/assets/images/shelf/NASAmanual.jpg" alt="NASA Graphics Standards Manual cover" style="max-width: 200px;"></p>
-            
-            <p><a href="https://standardsmanual.com/products/nasa-graphics-standards-manual">Find this book</a></p>
-        ]]></content>
-    </entry>
-    
-    <entry>
         <title>📚 Added to shelf: The Making of a Manager</title>
         <link href="https://bookshop.org/p/books/the-making-of-a-manager-what-to-do-when-everyone-looks-to-you-julie-zhuo/10222806"/>
         <updated>Tue Nov 19 2024 00:00:00 GMT+0000 (Coordinated Universal Time)T00:00:00Z</updated>
@@ -119,6 +105,20 @@
             <p><img src="https://chrisguimarin.com/assets/images/shelf/making-of-a-manager.jpg" alt="The Making of a Manager cover" style="max-width: 200px;"></p>
             
             <p><a href="https://bookshop.org/p/books/the-making-of-a-manager-what-to-do-when-everyone-looks-to-you-julie-zhuo/10222806">Find this book</a></p>
+        ]]></content>
+    </entry>
+    
+    <entry>
+        <title>📚 Added to shelf: NASA Graphics Standards Manual</title>
+        <link href="https://standardsmanual.com/products/nasa-graphics-standards-manual"/>
+        <updated>Tue Nov 26 2024 00:00:00 GMT+0000 (Coordinated Universal Time)T00:00:00Z</updated>
+        <id>https://chrisguimarin.com/books/nasa-graphics-standards/</id>
+        <content type="html"><![CDATA[
+            <p>Added <strong>NASA Graphics Standards Manual</strong> by Richard Danne &amp; Bruce Blackburn to my shelf.</p>
+            
+            <p><img src="https://chrisguimarin.com/assets/images/shelf/NASAmanual.jpg" alt="NASA Graphics Standards Manual cover" style="max-width: 200px;"></p>
+            
+            <p><a href="https://standardsmanual.com/products/nasa-graphics-standards-manual">Find this book</a></p>
         ]]></content>
     </entry>
     
