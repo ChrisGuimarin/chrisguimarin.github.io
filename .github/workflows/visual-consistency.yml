@@ -35,7 +35,6 @@ jobs:
       
       - name: Run visual regression tests
         run: npm run test:visual
-        continue-on-error: true  # TODO: Remove after baselines updated on main
       
       - name: Upload test results on failure
         if: failure()
