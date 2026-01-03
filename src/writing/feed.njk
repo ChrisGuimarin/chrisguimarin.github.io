@@ -23,6 +23,7 @@ layout: false
         <title>{{ post.data.title }}</title>
         <link href="{{ post.url | absoluteUrl(site.url or 'https://chrisguimarin.com') }}"/>
         <updated>{{ post.date | dateToRfc3339 }}</updated>
+        <published>{{ post.date | dateToRfc3339 }}</published>
         <id>{{ post.url | absoluteUrl(site.url or 'https://chrisguimarin.com') }}</id>
         <content type="html">{{ post.templateContent | htmlToAbsoluteUrls(site.url or 'https://chrisguimarin.com') }}</content>
     </entry>
