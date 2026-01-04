@@ -4,6 +4,7 @@ eleventyExcludeFromCollections: true
 layout: false
 ---
 <?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/assets/feed.xsl" type="text/xsl"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <title>Chris Guimarin</title>
     <subtitle>Design, leadership, and the stage</subtitle>
@@ -14,6 +15,16 @@ layout: false
     <author>
         <name>Chris Guimarin</name>
     </author>
+    {% for post in collections.writing | reverse %}
+    <entry>
+        <title>{{ post.data.title }}</title>
+        <link href="{{ post.url | absoluteUrl(site.url or 'https://chrisguimarin.com') }}"/>
+        <updated>{{ post.date | dateToRfc3339 }}</updated>
+        <published>{{ post.date | dateToRfc3339 }}</published>
+        <id>{{ post.url | absoluteUrl(site.url or 'https://chrisguimarin.com') }}</id>
+        <content type="html">{{ post.templateContent | htmlToAbsoluteUrls(site.url or 'https://chrisguimarin.com') }}</content>
+    </entry>
+    {% endfor %}
     {% for book in collections.books | reverse %}
     <entry>
         <title>📚 Added to shelf: {{ book.data.title }}</title>

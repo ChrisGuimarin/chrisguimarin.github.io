@@ -1,0 +1,148 @@
+# AI Agent Rules for ChrisGuimarin.com
+
+> **Note**: This file makes project context available to AI coding assistants like Cursor, Claude Code, and others. The canonical source is `WARP.md` - if you update project guidelines, update WARP.md and sync this file.
+
+## Project Overview
+
+This is a personal website for Chris Guimarin built with [Eleventy](https://www.11ty.dev/) (11ty) static site generator. The site features sections for design work, theater involvement, projects, a book shelf, and personal information. The site is deployed at chrisguimarin.com (via GitHub Pages/Cloudflare Pages).
+
+## Development Commands
+
+```bash
+npm start    # Start development server with live reload
+npm run build    # Build for production (outputs to /docs directory)
+npm run lint:css          # Check CSS for issues
+npm run lint:css:fix      # Auto-fix CSS issues
+npm run test:visual              # Run visual tests against baselines
+npm run test:visual:update       # Update baseline screenshots
+```
+
+## Architecture Overview
+
+### Build System
+- **Static Site Generator**: Eleventy (11ty) v3.1.0
+- **CSS Processing**: PostCSS with postcss-import for CSS file imports
+- **Template Engine**: Nunjucks (.njk files) for layouts and includes
+- **Output Directory**: `/docs` (configured for GitHub Pages)
+- **Input Directory**: `/src`
+
+### Content Structure
+The site follows a collection-based architecture:
+
+- **Collections**: Defined in `.eleventy.js` - `work`, `writing`, and `books` collections
+- **Content Types**:
+  - Books: Individual markdown files in `/src/books/` with frontmatter (title, author, category, cover, link, dateAdded)
+  - Work: Portfolio pieces in `/src/work/`
+  - Writing: Blog-style content in `/src/writing/`
+  - Pages: Static pages (about, design, theater, projects, shelf) in respective directories
+
+### Template System
+- **Base Layout**: `src/_includes/base.njk` - Main HTML structure with navigation, theme toggle, and footer
+- **Specialized Templates**: `book.njk`, `work.njk`, `post.njk`, `book-grid.njk` for different content types
+- **Navigation**: Automatically highlights current page using `aria-current="page"`
+
+### Styling Architecture
+- **CSS Organization**: Modular CSS with imports in `main.css`
+- **Component Structure**: Separate CSS files for components (nav, book, theater, rss, writing)
+- **Design System**: CSS custom properties for consistent theming
+- **Responsive Design**: Mobile-first approach with detailed breakpoint management
+- **Theme System**: Light/dark mode toggle with system preference detection and localStorage persistence
+
+## File Organization
+
+```
+src/
+├── _includes/          # Nunjucks templates and layouts
+├── assets/
+│   └── css/           # Modular CSS files
+├── books/             # Individual book markdown files
+├── work/              # Portfolio/work items
+├── writing/           # Blog posts and articles
+├── about/             # About page
+├── design/            # Design work showcase
+├── theater/           # Theater-related content
+├── projects/          # Projects showcase
+├── shelf/             # Book shelf page
+└── index.md           # Homepage content
+```
+
+## Development Best Practices
+
+### Pre-Implementation Checklist
+
+**1. Version Control Setup**
+- Check git status: `git status`
+- Create feature branch: `git checkout -b feature/descriptive-name`
+- Branch naming: `feature/`, `fix/`, `docs/`, `refactor/`
+
+**2. Implementation Workflow**
+- Break work into logical phases/commits
+- Test after each phase before proceeding
+- Use conventional commits: `type: description`
+- Types: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`
+- Include co-author line: `Co-Authored-By: Warp <agent@warp.dev>`
+
+**3. Testing Requirements**
+- Build test: `npm run build`
+- CSS linting: `npm run lint:css`
+- Visual regression: `npm run test:visual`
+- Run verification scripts when applicable: `./verify-*.sh`
+
+**4. Code Quality Practices**
+- **Create reusable components**: Use `src/_includes/` for Nunjucks components
+- **Performance optimization**:
+  - Compress images before adding to repo
+  - Use `loading="lazy"` for below-fold images
+  - Use `loading="eager"` for above-fold/critical images
+  - Add `decoding="async"` to all images
+  - Implement responsive images with `srcset` and `sizes`
+- **Accessibility**:
+  - Always include descriptive `alt` text
+  - Test keyboard navigation
+  - Verify ARIA labels and semantic HTML
+
+### CSS Best Practices
+- **Use CSS variables** for colors, spacing, and fonts defined in `:root`
+- **Create modular components** in `src/assets/css/components/` for new features
+- **Import components** in `src/assets/css/main.css` using `@import`
+- **Follow naming conventions**: kebab-case for classes (e.g., `.writing-item-title`)
+- **Use existing spacing variables**: `--spacing-xs`, `--spacing-sm`, `--spacing-md`, `--spacing-lg`
+- **Use color variables**: `--color-primary`, `--color-text`, `--color-text-muted`, `--color-border`
+
+## RSS Feeds
+
+The site provides two RSS feeds using the @11ty/eleventy-plugin-rss plugin:
+
+### Feed URLs
+- **Unified Feed**: `/feed.xml` - Combined books and writing for RSS readers
+- **Writing Feed**: `/writing/feed.xml` - Writing posts only for Buttondown email automation
+
+### Feed Features
+- Book entries prefixed with "📚 Added to shelf:"
+- Books sorted by `dateAdded` field (reverse chronological)
+- Writing posts sorted by `date` field (reverse chronological)
+- Autodiscovery links in `<head>` for RSS reader detection
+- XSLT styling for browser presentation (`src/assets/feed.xsl`)
+- RSS icons on shelf and writing pages
+
+## Visual Regression Testing
+
+Uses Playwright for visual regression testing across three viewports (Desktop: 1400x900, Tablet: 800x1024, Mobile: 375x667).
+
+### When to Update Baselines
+Update baselines when you intentionally change layout, colors, typography, spacing, or responsive behavior.
+
+### When to Skip Visual Tests
+When adding new visual elements, skip tests during development and update baselines at the end: `npm run test:visual:update`
+
+## Important Notes
+
+- **Never commit changes** unless explicitly asked
+- The site outputs to `/docs` directory for GitHub Pages compatibility
+- RSS feeds are generated at build time
+- Visual regression baselines must be committed to git
+- All tests must pass before merging PRs
+
+---
+
+For complete documentation, see `WARP.md` in the repository root.

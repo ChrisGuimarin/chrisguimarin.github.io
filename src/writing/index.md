@@ -5,7 +5,7 @@ description: Essays, notes, and explorations from the intersection of design, te
 permalink: /writing/
 ---
 
-# Writing
+{% render "page-header.njk", title: "Writing", feedUrl: "/writing/feed.xml", feedLabel: "Subscribe to writing updates" %}
 
 {% if collections.writing.length > 0 %}
 {% for post in collections.writing | reverse %}

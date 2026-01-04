@@ -4,7 +4,7 @@ layout: base.njk
 description: Essays, notes, and the books I keep handing to friends, all in one place.
 ---
 
-# Shelf
+{% render "page-header.njk", title: "Shelf", feedUrl: "/feed.xml", feedLabel: "Subscribe to book updates" %}
 
 {% if collections.writing.length > 0 %}
     {% for post in collections.writing | reverse | slice(0, 3) %}

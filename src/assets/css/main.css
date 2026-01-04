@@ -10,6 +10,7 @@
 @import url("components/newsletter.css");
 @import url("components/social-links.css");
 @import url("components/writing.css");
+@import url("components/rss.css");
 
 
 
@@ -159,21 +160,30 @@ a {
     text-underline-offset: 0.2em;
 }
 
-a:hover {
-    text-decoration-thickness: 0.2em;
-}
-
-/* Override link color for nav and certain components */
+/* Override link color for nav and sub-nav */
 nav a,
 .sub-nav a {
     color: inherit;
     text-decoration: none;
 }
 
+.sub-nav a {
+    color: var(--color-text-muted);
+}
+
+a:focus,
+button:focus {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+a:hover {
+    text-decoration-thickness: 0.2em;
+}
+
 nav a:hover,
 .sub-nav a:hover {
     text-decoration: underline;
-    text-decoration-thickness: 0.1em;
 }
 
 /* ==========================================================================
@@ -183,15 +193,6 @@ nav a:hover,
 /* Primary Navigation */
 nav {
     margin-bottom: 0;
-}
-
-nav a {
-    color: inherit;
-    text-decoration: none;
-}
-
-nav a:hover {
-    text-decoration: underline;
 }
 
 nav ul {
@@ -238,13 +239,11 @@ nav a[aria-current="page"] {
         width: 100%;
         max-width: 100%;
         overflow-wrap: break-word;
-        overflow-wrap: break-word;
     }
     
     /* Better typography for mobile */
     h1, h2, h3, h4, h5, h6 {
         max-width: 100%;
-        overflow-wrap: break-word;
         overflow-wrap: break-word;
     }
     
@@ -256,7 +255,6 @@ nav a[aria-current="page"] {
     
     p {
         max-width: 100%;
-        overflow-wrap: break-word;
         overflow-wrap: break-word;
     }
 
@@ -275,14 +273,7 @@ nav a[aria-current="page"] {
         position: relative;
 
         /* subtle edge fades using masks; keeps scrollbar visible */
-        mask-image: linear-gradient(
-          to right,
-          transparent 0,
-          black var(--nav-fade),
-          black calc(100% - var(--nav-fade)),
-          transparent 100%
-        );
-        mask-image: linear-gradient(
+        -webkit-mask-image: linear-gradient(
           to right,
           transparent 0,
           black var(--nav-fade),
@@ -309,15 +300,6 @@ nav a[aria-current="page"] {
 /* Secondary Navigation */
 .sub-nav {
     margin-bottom: var(--spacing-md);
-}
-
-.sub-nav a {
-    color: var(--color-text-muted);
-    text-decoration: none;
-}
-
-.sub-nav a:hover {
-    text-decoration: underline;
 }
 
 /* ==========================================================================
@@ -535,14 +517,23 @@ nav a[aria-current="page"] {
     }
 }
 
-#theme-toggle {
+.theme-toggle-group {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+#theme-toggle,
+#theme-reset {
     background: none;
     border: none;
     padding: 0;
     cursor: pointer;
+    font-size: 1.2rem;
     display: flex;
     align-items: center;
-    font-size: 1.2rem;
+    line-height: 1;
+    vertical-align: middle;
 }
 
 #theme-toggle:hover {
@@ -563,29 +554,6 @@ nav a[aria-current="page"] {
 
 [data-theme='dark'] .theme-toggle-dark {
     display: none;
-}
-
-.theme-toggle-group {
-    display: flex;
-    align-items: center;
-    position: relative;
-
-    /* Remove or comment out the next line: */
-
-    /* height: 2.2em; */
-}
-
-#theme-toggle,
-#theme-reset {
-    background: none;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    font-size: 1.2rem;
-    display: flex;
-    align-items: center;
-    line-height: 1;
-    vertical-align: middle;
 }
 
 #theme-toggle span,
@@ -614,12 +582,6 @@ nav a[aria-current="page"] {
 .theme-toggle-group:focus-within #theme-reset {
     visibility: visible;
     opacity: 1;
-}
-
-a:focus,
-button:focus {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
 }
 
 /* Visually hide skip link except when focused */

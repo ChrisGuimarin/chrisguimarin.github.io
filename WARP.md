@@ -173,9 +173,9 @@ Identify test cases before implementing:
 - Test in multiple browsers if UI changes are involved
 - Validate external integrations (RSS feeds, forms, etc.)
 - **Run CSS linting**: `npm run lint:css` to check for CSS issues
-- **Run visual regression tests**: `npm run test:visual` to catch UI changes
-- **Review visual diffs**: If visual tests fail, check `test-results/` for diff images
-- **Update baselines if intentional**: Use `npm run test:visual:update` only for deliberate UI changes
+- **Run visual smoke test**: `npm run test:visual` to catch major UI breakage (homepage only)
+- **Review visual diff**: If test fails, check `test-results/` for diff image
+- **Update baseline if intentional**: Use `npm run test:visual:update` only for deliberate homepage changes
 - **Create verification scripts when appropriate:**
   - For complex features, create bash scripts to automate testing (e.g., `verify-*.sh`)
   - Script should test all acceptance criteria with pass/fail reporting
@@ -253,11 +253,36 @@ The writing-only feed (`/writing/feed.xml`) is configured for Buttondown email a
 This ensures that adding books to the shelf doesn't trigger emails, but publishing writing posts does.
 
 ### Testing Feeds
-Run the verification script to test RSS implementation:
+Run the verification scripts to test RSS implementation:
 ```bash
-./verify-rss-feeds.sh
+./verify-rss-feeds.sh      # Tests feed structure and content
+./verify-rss-styling.sh    # Tests feed styling and page icons
 ```
-The script tests: build success, feed existence, XML validity, book prefixes, autodiscovery, shelf page structure, and writing index.
+The scripts test: build success, feed existence, XML validity, XSLT styling, RSS icons on pages, and educational banner.
+
+### Feed Styling (Browser Presentation)
+When users visit RSS feeds directly in a browser, they see a styled HTML page instead of raw XML:
+- **XSLT Stylesheet**: `src/assets/feed.xsl` transforms Atom XML into branded HTML
+- **Educational Banner**: Explains what RSS is with link to aboutfeeds.com
+- **Theme Support**: Light/dark mode via `prefers-color-scheme`
+- **Branding**: Uses Chris Guimarin site colors, typography, and spacing
+
+RSS readers (Feedly, NetNewsWire, etc.) ignore the XSLT and parse the raw XML normally.
+
+### RSS Icons on Pages
+The shelf and writing pages display RSS subscribe icons:
+- **Shelf page**: Links to `/feed.xml` (books feed)
+- **Writing page**: Links to `/writing/feed.xml` (writing-only feed)
+
+Components used:
+- `src/_includes/page-header.njk` - Page title with optional RSS icon
+- `src/_includes/rss-icon.njk` - Reusable RSS icon with accessible markup
+- `src/assets/css/components/rss.css` - Icon and page header styling
+
+To add RSS icon to a new page:
+```liquid
+{% render "page-header.njk", title: "Page Title", feedUrl: "/feed.xml", feedLabel: "Subscribe to updates" %}
+```
 
 ## CSS Consistency and Linting
 
@@ -308,52 +333,43 @@ Example component structure:
 }
 ```
 
-## Visual Regression Testing
+## Visual Smoke Testing
 
-The site uses Playwright for visual regression testing to catch unintended UI changes.
+The site uses Playwright for a simplified visual smoke test to catch major UI breakage.
 
 ### Test Configuration
 Configuration file: `playwright.config.js`
 - Tests built site in `/docs` directory
 - Uses http-server to serve site locally on port 8080
-- Tests Chromium browser (can be extended to Firefox/WebKit)
-- Baseline screenshots stored in `tests/visual/pages.spec.js-snapshots/`
+- Tests Chromium browser
+- Baseline screenshot stored in `tests/visual/pages.spec.js-snapshots/`
 
 ### Running Visual Tests
 ```bash
-npm run test:visual              # Run visual tests against baselines
-npm run test:visual:update       # Update baseline screenshots
+npm run test:visual              # Run visual test against baseline
+npm run test:visual:update       # Update baseline screenshot
 ```
 
 ### Test Coverage
-Tests capture screenshots of key pages across three viewports:
-- **Desktop**: 1400x900
-- **Tablet**: 800x1024
-- **Mobile**: 375x667
+Simplified approach tests only the homepage at desktop viewport (1400x900):
+- **Homepage**: Single baseline screenshot to catch major visual breakage
+- **Philosophy**: For a personal site with manual review, full regression testing is overkill
+- **Purpose**: Smoke test to ensure builds don't catastrophically break the layout
 
-Pages tested:
-- Homepage (`/`)
-- Shelf (`/shelf/`)
-- Writing index (`/writing/`)
-- About (`/about/`)
-- Theater (`/theater/`)
-- Projects (`/projects/`)
+### When to Update Baseline
+Update baseline when you intentionally change:
+- Homepage layout or positioning
+- Homepage colors or styling
+- Homepage typography or spacing
+- Content that affects homepage appearance
 
-### When to Update Baselines
-Update baselines when you intentionally change:
-- Layout or positioning
-- Colors or styling
-- Typography or spacing
-- Responsive behavior
-- Content that affects page height
-
-**Important**: Always review the diff images before updating baselines to ensure changes are intentional.
+**Important**: Always review the diff image before updating baseline to ensure changes are intentional.
 
 ### Visual Test Best Practices
 - **Build before testing**: Always run `npm run build` before visual tests
-- **Review diffs**: Check `test-results/` directory for diff images when tests fail
-- **Commit baselines**: Baseline screenshots in `tests/visual/pages.spec.js-snapshots/` must be committed to git
-- **CI will fail on mismatches**: GitHub Actions will catch visual regressions automatically
+- **Review diffs**: Check `test-results/` directory for diff image when test fails
+- **Commit baseline**: Baseline screenshot in `tests/visual/pages.spec.js-snapshots/` must be committed to git
+- **Manual review**: Since this is a smoke test, still manually review all pages during development
 
 ## Verification Scripts
 

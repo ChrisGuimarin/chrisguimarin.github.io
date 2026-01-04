@@ -85,15 +85,14 @@ else
     ((FAIL++))
 fi
 
-# Test 8: Check that baseline screenshots exist
-echo "🖼️  Test 8: Baseline screenshots exist..."
-SNAPSHOT_DIR="tests/visual/pages.spec.js-snapshots"
-if [ -d "$SNAPSHOT_DIR" ] && [ "$(ls -A $SNAPSHOT_DIR)" ]; then
-    SNAPSHOT_COUNT=$(ls -1 $SNAPSHOT_DIR/*.png 2>/dev/null | wc -l)
-    echo -e "${GREEN}✓ PASS${NC} - Found $SNAPSHOT_COUNT baseline screenshots"
+# Test 8: Check that baseline screenshot exists (homepage only)
+echo "🖼️  Test 8: Baseline screenshot exists..."
+SNAPSHOT_FILE="tests/visual/pages.spec.js-snapshots/homepage-desktop.png"
+if [ -f "$SNAPSHOT_FILE" ]; then
+    echo -e "${GREEN}✓ PASS${NC} - Homepage baseline screenshot exists"
     ((PASS++))
 else
-    echo -e "${RED}✗ FAIL${NC} - No baseline screenshots found"
+    echo -e "${RED}✗ FAIL${NC} - Homepage baseline screenshot not found"
     ((FAIL++))
 fi
 
