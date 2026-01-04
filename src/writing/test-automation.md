@@ -2,6 +2,7 @@
 title: "Test: Buttondown Automation"
 date: 2026-01-03
 excerpt: "This is a test post to verify Buttondown RSS automation is working correctly."
+eleventyExcludeFromCollections: true
 ---
 
 This is a **test post** to verify the Buttondown RSS automation is working correctly.
