@@ -47,6 +47,9 @@ jobs:
       - name: Run RSS feed verification
         run: ./verify-rss-feeds.sh
       
+      - name: Run RSS styling verification
+        run: ./verify-rss-styling.sh
+      
       - name: Run image optimization verification
         run: ./verify-image-optimization.sh
       

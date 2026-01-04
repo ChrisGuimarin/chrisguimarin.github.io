@@ -264,7 +264,7 @@ nav a[aria-current="page"] {
         position: relative;
 
         /* subtle edge fades using masks; keeps scrollbar visible */
-        mask-image: linear-gradient(
+        -webkit-mask-image: linear-gradient(
           to right,
           transparent 0,
           black var(--nav-fade),
@@ -625,6 +625,47 @@ nav a[aria-current="page"] {
     }
 }
 /* ==========================================================================
+   RSS Icon and Page Header
+   ========================================================================== */
+/* Page header with title and optional RSS icon */
+.page-header {
+    display: flex;
+    align-items: baseline;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+}
+.page-header h1 {
+    margin: 0;
+}
+/* RSS link and icon styling */
+.rss-link {
+    display: inline-flex;
+    align-items: center;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+.rss-link:hover {
+    color: var(--color-primary);
+}
+.rss-icon {
+    width: 20px;
+    height: 20px;
+    fill: currentcolor;
+}
+/* Mobile adjustments */
+@media (width <= 500px) {
+    .page-header {
+        flex-wrap: wrap;
+        gap: var(--spacing-xs);
+    }
+    
+    .rss-icon {
+        width: 18px;
+        height: 18px;
+    }
+}
+/* ==========================================================================
    CSS Custom Properties (Variables)
    ========================================================================== */
 :root {
@@ -824,13 +865,11 @@ nav a[aria-current="page"] {
         width: 100%;
         max-width: 100%;
         overflow-wrap: break-word;
-        overflow-wrap: break-word;
     }
     
     /* Better typography for mobile */
     h1, h2, h3, h4, h5, h6 {
         max-width: 100%;
-        overflow-wrap: break-word;
         overflow-wrap: break-word;
     }
     
@@ -842,7 +881,6 @@ nav a[aria-current="page"] {
     
     p {
         max-width: 100%;
-        overflow-wrap: break-word;
         overflow-wrap: break-word;
     }
 
@@ -861,7 +899,7 @@ nav a[aria-current="page"] {
         position: relative;
 
         /* subtle edge fades using masks; keeps scrollbar visible */
-        mask-image: linear-gradient(
+        -webkit-mask-image: linear-gradient(
           to right,
           transparent 0,
           black var(--nav-fade),
