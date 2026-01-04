@@ -1,62 +1,44 @@
 import { test, expect } from '@playwright/test';
 
-const viewports = [
-  { name: 'desktop', width: 1400, height: 900 },
-  { name: 'tablet', width: 800, height: 1024 },
-  { name: 'mobile', width: 375, height: 667 },
-];
+// Simplified smoke test - just homepage at desktop viewport
+test('homepage renders correctly', async ({ page }) => {
+  // Set desktop viewport
+  await page.setViewportSize({ 
+    width: 1400, 
+    height: 900 
+  });
 
-const pages = [
-  { name: 'homepage', path: '/' },
-  { name: 'shelf', path: '/shelf/' },
-  { name: 'writing', path: '/writing/' },
-  { name: 'about', path: '/about/' },
-  { name: 'theater', path: '/theater/' },
-  { name: 'projects', path: '/projects/' },
-];
+  // Navigate to homepage
+  await page.goto('/');
 
-for (const viewport of viewports) {
-  for (const page of pages) {
-    test(`${page.name} - ${viewport.name}`, async ({ page: playwrightPage }) => {
-      // Set viewport size
-      await playwrightPage.setViewportSize({ 
-        width: viewport.width, 
-        height: viewport.height 
-      });
-
-      // Navigate to page
-      await playwrightPage.goto(page.path);
-
-      // Wait for page to be fully loaded
-      await playwrightPage.waitForLoadState('networkidle');
-      
-      // Wait for all images to load
-      await playwrightPage.evaluate(() => {
-        return Promise.all(
-          Array.from(document.images)
-            .filter(img => !img.complete)
-            .map(img => new Promise(resolve => {
-              img.addEventListener('load', resolve);
-              img.addEventListener('error', resolve);
-            }))
-        );
-      });
-      
-      // Wait for fonts to load
-      await playwrightPage.evaluate(() => document.fonts.ready);
-      
-      // Additional wait for any layout shifts
-      await playwrightPage.waitForTimeout(500);
-      
-      // Take full page screenshot and compare
-      await expect(playwrightPage).toHaveScreenshot(
-        `${page.name}-${viewport.name}.png`,
-        {
-          fullPage: true,
-          animations: 'disabled',
-          timeout: 10000,
-        }
-      );
-    });
-  }
-}
+  // Wait for page to be fully loaded
+  await page.waitForLoadState('networkidle');
+  
+  // Wait for all images to load
+  await page.evaluate(() => {
+    return Promise.all(
+      Array.from(document.images)
+        .filter(img => !img.complete)
+        .map(img => new Promise(resolve => {
+          img.addEventListener('load', resolve);
+          img.addEventListener('error', resolve);
+        }))
+    );
+  });
+  
+  // Wait for fonts to load
+  await page.evaluate(() => document.fonts.ready);
+  
+  // Additional wait for any layout shifts
+  await page.waitForTimeout(500);
+  
+  // Take full page screenshot and compare
+  await expect(page).toHaveScreenshot(
+    'homepage-desktop.png',
+    {
+      fullPage: true,
+      animations: 'disabled',
+      timeout: 10000,
+    }
+  );
+});

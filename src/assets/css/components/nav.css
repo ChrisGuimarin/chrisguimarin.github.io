@@ -12,10 +12,6 @@ nav a {
     text-decoration: none;
 }
 
-nav a:hover {
-    text-decoration: underline;
-}
-
 nav ul {
     list-style: none;
     padding: 0;
@@ -43,6 +39,7 @@ nav a[aria-current="page"] {
     text-decoration: none;
 }
 
+nav a:hover,
 .sub-nav a:hover {
     text-decoration: underline;
 }
@@ -65,13 +62,6 @@ nav a[aria-current="page"] {
 
         /* subtle edge fades using masks; keeps scrollbar visible */
         -webkit-mask-image: linear-gradient(
-          to right,
-          transparent 0,
-          black var(--nav-fade),
-          black calc(100% - var(--nav-fade)),
-          transparent 100%
-        );
-        mask-image: linear-gradient(
           to right,
           transparent 0,
           black var(--nav-fade),

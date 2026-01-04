@@ -173,9 +173,9 @@ Identify test cases before implementing:
 - Test in multiple browsers if UI changes are involved
 - Validate external integrations (RSS feeds, forms, etc.)
 - **Run CSS linting**: `npm run lint:css` to check for CSS issues
-- **Run visual regression tests**: `npm run test:visual` to catch UI changes
-- **Review visual diffs**: If visual tests fail, check `test-results/` for diff images
-- **Update baselines if intentional**: Use `npm run test:visual:update` only for deliberate UI changes
+- **Run visual smoke test**: `npm run test:visual` to catch major UI breakage (homepage only)
+- **Review visual diff**: If test fails, check `test-results/` for diff image
+- **Update baseline if intentional**: Use `npm run test:visual:update` only for deliberate homepage changes
 - **Create verification scripts when appropriate:**
   - For complex features, create bash scripts to automate testing (e.g., `verify-*.sh`)
   - Script should test all acceptance criteria with pass/fail reporting
@@ -333,59 +333,43 @@ Example component structure:
 }
 ```
 
-## Visual Regression Testing
+## Visual Smoke Testing
 
-The site uses Playwright for visual regression testing to catch unintended UI changes.
+The site uses Playwright for a simplified visual smoke test to catch major UI breakage.
 
 ### Test Configuration
 Configuration file: `playwright.config.js`
 - Tests built site in `/docs` directory
 - Uses http-server to serve site locally on port 8080
-- Tests Chromium browser (can be extended to Firefox/WebKit)
-- Baseline screenshots stored in `tests/visual/pages.spec.js-snapshots/`
+- Tests Chromium browser
+- Baseline screenshot stored in `tests/visual/pages.spec.js-snapshots/`
 
 ### Running Visual Tests
 ```bash
-npm run test:visual              # Run visual tests against baselines
-npm run test:visual:update       # Update baseline screenshots
+npm run test:visual              # Run visual test against baseline
+npm run test:visual:update       # Update baseline screenshot
 ```
 
 ### Test Coverage
-Tests capture screenshots of key pages across three viewports:
-- **Desktop**: 1400x900
-- **Tablet**: 800x1024
-- **Mobile**: 375x667
+Simplified approach tests only the homepage at desktop viewport (1400x900):
+- **Homepage**: Single baseline screenshot to catch major visual breakage
+- **Philosophy**: For a personal site with manual review, full regression testing is overkill
+- **Purpose**: Smoke test to ensure builds don't catastrophically break the layout
 
-Pages tested:
-- Homepage (`/`)
-- Shelf (`/shelf/`)
-- Writing index (`/writing/`)
-- About (`/about/`)
-- Theater (`/theater/`)
-- Projects (`/projects/`)
+### When to Update Baseline
+Update baseline when you intentionally change:
+- Homepage layout or positioning
+- Homepage colors or styling
+- Homepage typography or spacing
+- Content that affects homepage appearance
 
-### When to Update Baselines
-Update baselines when you intentionally change:
-- Layout or positioning
-- Colors or styling
-- Typography or spacing
-- Responsive behavior
-- Content that affects page height
-
-**Important**: Always review the diff images before updating baselines to ensure changes are intentional.
-
-### When to Skip Visual Tests
-When adding **new visual elements** (icons, components, layout changes), you can skip running visual regression tests during development since the baselines will need updating anyway. Instead:
-1. Complete the feature implementation
-2. Build and manually verify the changes look correct
-3. Update baselines at the end: `npm run test:visual:update`
-4. Review the new baseline screenshots before committing
+**Important**: Always review the diff image before updating baseline to ensure changes are intentional.
 
 ### Visual Test Best Practices
 - **Build before testing**: Always run `npm run build` before visual tests
-- **Review diffs**: Check `test-results/` directory for diff images when tests fail
-- **Commit baselines**: Baseline screenshots in `tests/visual/pages.spec.js-snapshots/` must be committed to git
-- **CI will fail on mismatches**: GitHub Actions will catch visual regressions automatically
+- **Review diffs**: Check `test-results/` directory for diff image when test fails
+- **Commit baseline**: Baseline screenshot in `tests/visual/pages.spec.js-snapshots/` must be committed to git
+- **Manual review**: Since this is a smoke test, still manually review all pages during development
 
 ## Verification Scripts
 

@@ -219,9 +219,6 @@ nav a {
     color: inherit;
     text-decoration: none;
 }
-nav a:hover {
-    text-decoration: underline;
-}
 nav ul {
     list-style: none;
     padding: 0;
@@ -244,6 +241,7 @@ nav a[aria-current="page"] {
     color: var(--color-text-muted);
     text-decoration: none;
 }
+nav a:hover,
 .sub-nav a:hover {
     text-decoration: underline;
 }
@@ -265,13 +263,6 @@ nav a[aria-current="page"] {
 
         /* subtle edge fades using masks; keeps scrollbar visible */
         -webkit-mask-image: linear-gradient(
-          to right,
-          transparent 0,
-          black var(--nav-fade),
-          black calc(100% - var(--nav-fade)),
-          transparent 100%
-        );
-        mask-image: linear-gradient(
           to right,
           transparent 0,
           black var(--nav-fade),
@@ -405,7 +396,7 @@ nav a[aria-current="page"] {
     padding: 0;
     margin: -1px;
     overflow: hidden;
-    clip: rect(0, 0, 0, 0);
+    clip-path: inset(50%);
     white-space: nowrap;
     border: 0;
 }
@@ -535,7 +526,7 @@ nav a[aria-current="page"] {
     padding: 0;
     margin: -1px;
     overflow: hidden;
-    clip: rect(0, 0, 0, 0);
+    clip-path: inset(50%);
     white-space: nowrap;
     border: 0;
 }
@@ -583,10 +574,6 @@ nav a[aria-current="page"] {
     color: var(--color-primary);
     text-decoration: none;
 }
-.writing-item-title a:hover {
-    text-decoration: underline;
-    text-decoration-thickness: 0.1em;
-}
 .writing-item-date {
     color: var(--color-text-muted);
     font-size: var(--font-size-small);
@@ -612,6 +599,10 @@ nav a[aria-current="page"] {
 .writing-recent-list .date {
     color: var(--color-text-muted);
     font-size: var(--font-size-small);
+}
+.writing-item-title a:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 0.1em;
 }
 /* Mobile adjustments */
 @media (width <= 500px) {
@@ -796,19 +787,26 @@ a {
     text-decoration-thickness: 0.05em;
     text-underline-offset: 0.2em;
 }
-a:hover {
-    text-decoration-thickness: 0.2em;
-}
-/* Override link color for nav and certain components */
+/* Override link color for nav and sub-nav */
 nav a,
 .sub-nav a {
     color: inherit;
     text-decoration: none;
 }
+.sub-nav a {
+    color: var(--color-text-muted);
+}
+a:focus,
+button:focus {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+a:hover {
+    text-decoration-thickness: 0.2em;
+}
 nav a:hover,
 .sub-nav a:hover {
     text-decoration: underline;
-    text-decoration-thickness: 0.1em;
 }
 /* ==========================================================================
    Navigation
@@ -816,13 +814,6 @@ nav a:hover,
 /* Primary Navigation */
 nav {
     margin-bottom: 0;
-}
-nav a {
-    color: inherit;
-    text-decoration: none;
-}
-nav a:hover {
-    text-decoration: underline;
 }
 nav ul {
     list-style: none;
@@ -906,13 +897,6 @@ nav a[aria-current="page"] {
           black calc(100% - var(--nav-fade)),
           transparent 100%
         );
-        mask-image: linear-gradient(
-          to right,
-          transparent 0,
-          black var(--nav-fade),
-          black calc(100% - var(--nav-fade)),
-          transparent 100%
-        );
     }
 
     /* Make the list size to its content so the container can scroll */
@@ -932,13 +916,6 @@ nav a[aria-current="page"] {
 /* Secondary Navigation */
 .sub-nav {
     margin-bottom: var(--spacing-md);
-}
-.sub-nav a {
-    color: var(--color-text-muted);
-    text-decoration: none;
-}
-.sub-nav a:hover {
-    text-decoration: underline;
 }
 /* ==========================================================================
    About Section
@@ -1134,14 +1111,22 @@ nav a[aria-current="page"] {
         padding: var(--spacing-sm);
     }
 }
-#theme-toggle {
+.theme-toggle-group {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+#theme-toggle,
+#theme-reset {
     background: none;
     border: none;
     padding: 0;
     cursor: pointer;
+    font-size: 1.2rem;
     display: flex;
     align-items: center;
-    font-size: 1.2rem;
+    line-height: 1;
+    vertical-align: middle;
 }
 #theme-toggle:hover {
     opacity: 0.8;
@@ -1157,27 +1142,6 @@ nav a[aria-current="page"] {
 }
 [data-theme='dark'] .theme-toggle-dark {
     display: none;
-}
-.theme-toggle-group {
-    display: flex;
-    align-items: center;
-    position: relative;
-
-    /* Remove or comment out the next line: */
-
-    /* height: 2.2em; */
-}
-#theme-toggle,
-#theme-reset {
-    background: none;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    font-size: 1.2rem;
-    display: flex;
-    align-items: center;
-    line-height: 1;
-    vertical-align: middle;
 }
 #theme-toggle span,
 #theme-reset {
@@ -1203,11 +1167,6 @@ nav a[aria-current="page"] {
 .theme-toggle-group:focus-within #theme-reset {
     visibility: visible;
     opacity: 1;
-}
-a:focus,
-button:focus {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
 }
 /* Visually hide skip link except when focused */
 .skip-link {

@@ -1,0 +1,53 @@
+/* ==========================================================================
+   Theme Styles
+   ========================================================================== */
+
+/* Dark theme colors */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme='light']) {
+        --color-bg: #1a1a1a;
+        --color-text: #F8F8FF;
+        --color-text-muted: #a0a0a0;
+        --color-primary: #4da8da;
+        --color-border: #333;
+    }
+}
+
+[data-theme='dark'] {
+    --color-bg: #1a1a1a;
+    --color-text: #F8F8FF;
+    --color-text-muted: #a0a0a0;
+    --color-primary: #4da8da;
+    --color-border: #333;
+}
+
+/* Theme Toggle Styles */
+#theme-toggle {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+}
+
+#theme-toggle:hover {
+    opacity: 0.8;
+}
+
+.theme-toggle-light {
+    display: none;
+}
+
+.theme-toggle-dark {
+    display: block;
+}
+
+[data-theme='dark'] .theme-toggle-light {
+    display: block;
+}
+
+[data-theme='dark'] .theme-toggle-dark {
+    display: none;
+}
