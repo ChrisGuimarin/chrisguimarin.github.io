@@ -176,7 +176,7 @@
       </head>
       <body>
         <div class="container">
-          <a href="https://chrisguimarin.com" class="back-link">← Back to chrisguimarin.com</a>
+          <a href="/" class="back-link">← Back to homepage</a>
           
           <div class="rss-banner">
             <h2>
@@ -228,7 +228,7 @@
               <code><xsl:value-of select="/atom:feed/atom:link[@rel='self']/@href"/></code>
             </p>
             <p>
-              <a href="https://chrisguimarin.com">chrisguimarin.com</a> · 
+              <a href="/">Back to site</a> · 
               <a href="https://aboutfeeds.com" target="_blank" rel="noopener noreferrer">What is RSS?</a>
             </p>
           </footer>
