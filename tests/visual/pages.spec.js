@@ -10,6 +10,7 @@ const pages = [
   { name: 'homepage', path: '/' },
   { name: 'shelf', path: '/shelf/' },
   { name: 'writing', path: '/writing/' },
+  { name: 'writing-post', path: '/writing/marks-on-blank-pages/' },
   { name: 'about', path: '/about/' },
   { name: 'theater', path: '/theater/' },
   { name: 'projects', path: '/projects/' },

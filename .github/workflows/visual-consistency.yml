@@ -28,7 +28,6 @@ jobs:
       
       - name: Run CSS linting
         run: npm run lint:css
-        continue-on-error: true
       
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium

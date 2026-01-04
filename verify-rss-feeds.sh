@@ -110,6 +110,78 @@ else
     ((FAIL++))
 fi
 
+# Test 10: Check unified feed has required Atom elements
+echo "⚛️  Test 10: Unified feed has required Atom elements..."
+REQUIRED_ELEMENTS=("title" "link" "updated" "id" "author")
+MISSING=0
+for element in "${REQUIRED_ELEMENTS[@]}"; do
+    if ! grep -q "<$element" docs/feed.xml; then
+        echo -e "${RED}  ✗ Missing <$element>${NC}"
+        ((MISSING++))
+    fi
+done
+if [ $MISSING -eq 0 ]; then
+    echo -e "${GREEN}✓ PASS${NC} - All required Atom elements present"
+    ((PASS++))
+else
+    echo -e "${RED}✗ FAIL${NC} - Missing $MISSING required elements"
+    ((FAIL++))
+fi
+
+# Test 11: Check feed entries have updated dates
+echo "📅 Test 11: Feed entries have dates..."
+ENTRIES_WITH_DATES=$(grep -c "<updated>" docs/feed.xml)
+TOTAL_ENTRIES=$(grep -c "<entry>" docs/feed.xml)
+if [ $ENTRIES_WITH_DATES -ge $TOTAL_ENTRIES ]; then
+    echo -e "${GREEN}✓ PASS${NC} - All entries have updated dates ($ENTRIES_WITH_DATES/$TOTAL_ENTRIES)"
+    ((PASS++))
+else
+    echo -e "${RED}✗ FAIL${NC} - Some entries missing dates ($ENTRIES_WITH_DATES/$TOTAL_ENTRIES)"
+    ((FAIL++))
+fi
+
+# Test 12: Check URLs are absolute (not relative)
+echo "🔗 Test 12: URLs are absolute..."
+if grep -q "href=\"/[^/]" docs/feed.xml || grep -q "href=\"\\.\\./\"" docs/feed.xml; then
+    echo -e "${RED}✗ FAIL${NC} - Found relative URLs in feed"
+    ((FAIL++))
+else
+    echo -e "${GREEN}✓ PASS${NC} - All URLs are absolute"
+    ((PASS++))
+fi
+
+# Test 13: Check writing feed has required elements
+echo "⚛️  Test 13: Writing feed has required Atom elements..."
+if [ -f "docs/writing/feed.xml" ]; then
+    MISSING=0
+    for element in "${REQUIRED_ELEMENTS[@]}"; do
+        if ! grep -q "<$element" docs/writing/feed.xml; then
+            echo -e "${RED}  ✗ Missing <$element>${NC}"
+            ((MISSING++))
+        fi
+    done
+    if [ $MISSING -eq 0 ]; then
+        echo -e "${GREEN}✓ PASS${NC} - All required Atom elements present in writing feed"
+        ((PASS++))
+    else
+        echo -e "${RED}✗ FAIL${NC} - Missing $MISSING required elements in writing feed"
+        ((FAIL++))
+    fi
+else
+    echo -e "${RED}✗ FAIL${NC} - Writing feed not found"
+    ((FAIL++))
+fi
+
+# Test 14: Check feed uses correct Atom namespace
+echo "📛 Test 14: Feed uses correct Atom namespace..."
+if grep -q 'xmlns="http://www.w3.org/2005/Atom"' docs/feed.xml; then
+    echo -e "${GREEN}✓ PASS${NC} - Correct Atom namespace"
+    ((PASS++))
+else
+    echo -e "${RED}✗ FAIL${NC} - Missing or incorrect Atom namespace"
+    ((FAIL++))
+fi
+
 # Summary
 echo ""
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"

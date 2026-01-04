@@ -9,7 +9,10 @@
     "lint:css": "stylelint 'src/assets/css/**/*.css'",
     "lint:css:fix": "stylelint 'src/assets/css/**/*.css' --fix",
     "test:visual": "playwright test",
-    "test:visual:update": "playwright test --update-snapshots"
+    "test:visual:update": "playwright test --update-snapshots",
+    "test:unit": "node tests/unit/filters.test.js",
+    "test": "npm run lint:css && npm run test:unit",
+    "prepare": "husky"
   },
   "repository": {
     "type": "git",
@@ -22,11 +25,18 @@
     "url": "https://github.com/ChrisGuimarin/chrisguimarin.github.io/issues"
   },
   "homepage": "https://chrisguimarin.github.io",
+  "lint-staged": {
+    "src/assets/css/**/*.css": [
+      "stylelint --fix"
+    ]
+  },
   "devDependencies": {
     "@11ty/eleventy": "^3.1.2",
     "@11ty/eleventy-plugin-rss": "^2.0.4",
     "@playwright/test": "^1.57.0",
     "http-server": "^14.1.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
     "postcss": "^8.5.5",
     "postcss-import": "^16.1.1",
     "stylelint": "^16.26.1",

@@ -29,11 +29,6 @@
     text-decoration: none;
 }
 
-.writing-item-title a:hover {
-    text-decoration: underline;
-    text-decoration-thickness: 0.1em;
-}
-
 .writing-item-date {
     color: var(--color-text-muted);
     font-size: var(--font-size-small);
@@ -64,6 +59,11 @@
 .writing-recent-list .date {
     color: var(--color-text-muted);
     font-size: var(--font-size-small);
+}
+
+.writing-item-title a:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 0.1em;
 }
 
 /* Mobile adjustments */

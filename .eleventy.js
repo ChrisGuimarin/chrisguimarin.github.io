@@ -7,7 +7,10 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addPlugin(pluginRss);
 
     // Pass through copy for assets
-    eleventyConfig.addPassthroughCopy("src/assets");
+    eleventyConfig.addPassthroughCopy("src/assets/images");
+    eleventyConfig.addPassthroughCopy("src/assets/favicons");
+    eleventyConfig.addPassthroughCopy("src/assets/fonts");
+    eleventyConfig.addPassthroughCopy("src/assets/js");
 
     // Handle CSS files
     eleventyConfig.addTemplateFormats("css");
