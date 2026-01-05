@@ -18,7 +18,7 @@
 
   function showMessage(text, type) {
     messageContainer.textContent = text;
-    messageContainer.className = `newsletter-message newsletter-message--${type}`;
+    messageContainer.className = `newsletter-message newsletter-message-${type}`;
     messageContainer.style.display = 'block';
   }
 
