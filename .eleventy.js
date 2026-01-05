@@ -64,6 +64,9 @@ module.exports = function (eleventyConfig) {
         return books.filter(book => book.data.category === category);
     });
 
+    // Add shortcode for current year (for copyright)
+    eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
+
     return {
         dir: {
             input: "src",
