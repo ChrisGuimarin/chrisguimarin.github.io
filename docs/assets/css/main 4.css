@@ -461,15 +461,29 @@ nav a:hover,
     font-size: 0.95rem;
     line-height: var(--line-height-base);
 }
-.newsletter-message-success {
-    background-color: var(--color-success-bg);
-    border: 1px solid var(--color-success-border);
-    color: var(--color-success-text);
+.newsletter-message--success {
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
 }
-.newsletter-message-error {
-    background-color: var(--color-error-bg);
-    border: 1px solid var(--color-error-border);
-    color: var(--color-error-text);
+.newsletter-message--error {
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+}
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+    .newsletter-message--success {
+        background-color: #1e4620;
+        border-color: #2d5a2e;
+        color: #a8d5a8;
+    }
+
+    .newsletter-message--error {
+        background-color: #4a1f1f;
+        border-color: #5e2a2a;
+        color: #f5b5b5;
+    }
 }
 /* Disabled state for submit button */
 .embeddable-buttondown-form input[type="submit"]:disabled {
@@ -721,12 +735,6 @@ nav a:hover,
     --color-text-muted: #666;
     --color-primary: #11689b;
     --color-border: #e5e5e5;
-    --color-success-bg: #d4edda;
-    --color-success-border: #c3e6cb;
-    --color-success-text: #155724;
-    --color-error-bg: #f8d7da;
-    --color-error-border: #f5c6cb;
-    --color-error-text: #721c24;
 }
 /* Dark theme colors */
 @media (prefers-color-scheme: dark) {
@@ -736,12 +744,6 @@ nav a:hover,
         --color-text-muted: #a0a0a0;
         --color-primary: #4da8da;
         --color-border: #333;
-        --color-success-bg: #1e4620;
-        --color-success-border: #2d5a2e;
-        --color-success-text: #a8d5a8;
-        --color-error-bg: #4a1f1f;
-        --color-error-border: #5e2a2a;
-        --color-error-text: #f5b5b5;
     }
 }
 [data-theme='dark'] {
@@ -750,12 +752,6 @@ nav a:hover,
     --color-text-muted: #a0a0a0;
     --color-primary: #4da8da;
     --color-border: #333;
-    --color-success-bg: #1e4620;
-    --color-success-border: #2d5a2e;
-    --color-success-text: #a8d5a8;
-    --color-error-bg: #4a1f1f;
-    --color-error-border: #5e2a2a;
-    --color-error-text: #f5b5b5;
 }
 /* ==========================================================================
    Base Styles

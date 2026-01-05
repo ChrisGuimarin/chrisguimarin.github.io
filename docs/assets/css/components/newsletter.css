@@ -121,6 +121,35 @@
     color: var(--color-primary);
 }
 
+/* Newsletter message (success/error) */
+.newsletter-message {
+    display: none;
+    grid-column: 1 / -1;
+    margin-top: var(--spacing-sm);
+    padding: 0.75rem 1rem;
+    border-radius: var(--border-radius);
+    font-size: 0.95rem;
+    line-height: var(--line-height-base);
+}
+
+.newsletter-message-success {
+    background-color: var(--color-success-bg);
+    border: 1px solid var(--color-success-border);
+    color: var(--color-success-text);
+}
+
+.newsletter-message-error {
+    background-color: var(--color-error-bg);
+    border: 1px solid var(--color-error-border);
+    color: var(--color-error-text);
+}
+
+/* Disabled state for submit button */
+.embeddable-buttondown-form input[type="submit"]:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
 @media (width <= 500px) {
     .newsletter-content {
         grid-template-columns: 1fr;

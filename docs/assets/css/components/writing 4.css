@@ -1,0 +1,79 @@
+/* ==========================================================================
+   Writing Posts / Article Listings
+   ========================================================================== */
+
+.writing-list {
+    margin: var(--spacing-md) 0;
+}
+
+.writing-item {
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-md);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.writing-item:last-child {
+    border-bottom: none;
+}
+
+.writing-item-title {
+    margin: 0 0 var(--spacing-xs) 0;
+    font-family: Sentient-Variable, Sentient-Bold, serif;
+    font-weight: 700;
+    font-size: 1.75rem;
+    line-height: 1.3;
+}
+
+.writing-item-title a {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+.writing-item-date {
+    color: var(--color-text-muted);
+    font-size: var(--font-size-small);
+    margin: 0 0 var(--spacing-sm) 0;
+}
+
+.writing-item-excerpt {
+    color: var(--color-text);
+    line-height: var(--line-height-base);
+    margin: 0;
+}
+
+/* Shelf page writing section - compact list style */
+.writing-recent-list {
+    list-style: none;
+    padding: 0;
+    margin: var(--spacing-md) 0;
+}
+
+.writing-recent-list li {
+    margin-bottom: var(--spacing-sm);
+}
+
+.writing-recent-list a {
+    color: var(--color-primary);
+}
+
+.writing-recent-list .date {
+    color: var(--color-text-muted);
+    font-size: var(--font-size-small);
+}
+
+.writing-item-title a:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 0.1em;
+}
+
+/* Mobile adjustments */
+ @media (width <= 500px) {
+    .writing-item-title {
+        font-size: 1.5rem;
+    }
+    
+    .writing-item {
+        margin-bottom: var(--spacing-md);
+        padding-bottom: var(--spacing-sm);
+    }
+}
