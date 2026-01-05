@@ -68,7 +68,7 @@
         localStorage.setItem(RATE_LIMIT_KEY, now.toString());
         
         // Show success message
-        showMessage('Thanks for subscribing! Check your email to confirm.', 'success');
+        showMessage('Thanks! Check your email to confirm.', 'success');
         
         // Clear form
         form.reset();
