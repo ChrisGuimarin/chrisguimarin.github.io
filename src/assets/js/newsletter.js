@@ -24,8 +24,7 @@
     // Store submit time
     localStorage.setItem(RATE_LIMIT_KEY, now.toString());
 
-    // Open popup window
-    window.open('https://buttondown.com/chrisguimarin', 'popupwindow');
+    // Form will submit normally without popup
     return true;
   });
 })();
