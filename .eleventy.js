@@ -6,8 +6,10 @@ module.exports = function (eleventyConfig) {
     // Add RSS plugin
     eleventyConfig.addPlugin(pluginRss);
 
-    // Pass through copy for assets
-    eleventyConfig.addPassthroughCopy("src/assets");
+    // Pass through copy for assets (excluding CSS which is handled by the CSS extension below)
+    eleventyConfig.addPassthroughCopy({"src/assets/fonts": "assets/fonts"});
+    eleventyConfig.addPassthroughCopy({"src/assets/images": "assets/images"});
+    eleventyConfig.addPassthroughCopy({"src/assets/js": "assets/js"});
 
     // Handle CSS files
     eleventyConfig.addTemplateFormats("css");
