@@ -70,14 +70,23 @@
     color: var(--color-text);
     font-family: var(--font-family-base);
     font-size: 1rem;
-    transition: border-color 0.2s ease;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
     width: 100%;
 }
 
 .embeddable-buttondown-form input[type="email"]:focus {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
+    outline: none;
     border-color: var(--color-primary);
+    box-shadow:
+        0 0 0 1px var(--color-primary),
+        0 0 20px -5px rgba(77, 168, 218, 0.4);
+}
+
+/* Light mode glow adjustment */
+:root:not([data-theme='dark']) .embeddable-buttondown-form input[type="email"]:focus {
+    box-shadow:
+        0 0 0 1px var(--color-primary),
+        0 0 20px -5px rgba(17, 104, 155, 0.35);
 }
 
 .embeddable-buttondown-form input[type="submit"] {
