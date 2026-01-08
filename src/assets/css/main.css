@@ -135,13 +135,13 @@ main {
 }
 
 h1 {
-    font-family: Sentient-Variable, Sentient-Bold, serif;
+    font-family: Sentient-Variable, serif;
     color: var(--color-primary);
     font-weight: 700;
 }
 
 h2 {
-    font-family: Sentient-VariableItalic, Sentient-RegularItalic, serif;
+    font-family: Sentient-VariableItalic, serif;
     font-weight: 300;
     font-style: italic;
 }
