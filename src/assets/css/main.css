@@ -127,8 +127,6 @@ body,
     background-color: var(--color-bg);
     color: var(--color-text);
     font-family: var(--font-family-base);
-
-    /* <-- use the variable here */
     line-height: 1.5;
 }
 
