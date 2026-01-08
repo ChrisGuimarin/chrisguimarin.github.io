@@ -1,0 +1,50 @@
+/* ==========================================================================
+   Theme Transition - Radial Wipe Effect
+   ========================================================================== */
+
+.theme-transition-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    pointer-events: none;
+    border-radius: 50%;
+    transform: scale(0);
+    opacity: 1;
+}
+
+/* Expanding animation */
+.theme-transition-overlay.expanding {
+    animation: theme-expand 0.4s ease-out forwards;
+}
+
+/* Fading out animation */
+.theme-transition-overlay.fading {
+    animation: theme-fade 0.25s ease-in forwards;
+}
+
+@keyframes theme-expand {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes theme-fade {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    .theme-transition-overlay {
+        display: none !important;
+    }
+}
