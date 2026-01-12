@@ -1,10 +1,23 @@
-// Newsletter form functionality with AJAX submission
+/**
+ * Newsletter form functionality with AJAX submission
+ *
+ * Provides enhanced newsletter subscription with:
+ * - AJAX form submission without page reload
+ * - Rate limiting to prevent spam submissions
+ * - Accessible success/error messaging
+ * - Progressive enhancement (works with JS disabled)
+ *
+ * @module newsletter
+ */
 (function() {
   const form = document.querySelector('.embeddable-buttondown-form');
   if (!form) return;
 
+  /** @const {string} localStorage key for tracking last submission time */
   const RATE_LIMIT_KEY = 'newsletter_last_submit';
-  const RATE_LIMIT_MS = 60000; // 1 minute
+
+  /** @const {number} Minimum time between submissions in milliseconds (1 minute) */
+  const RATE_LIMIT_MS = 60000;
 
   // Create message container if it doesn't exist
   let messageContainer = form.querySelector('.newsletter-message');
@@ -16,18 +29,35 @@
     form.appendChild(messageContainer);
   }
 
+  /**
+   * Displays a message to the user
+   *
+   * @param {string} text - The message text to display
+   * @param {'success'|'error'} type - The message type for styling
+   */
   function showMessage(text, type) {
     messageContainer.textContent = text;
     messageContainer.className = `newsletter-message newsletter-message-${type}`;
     messageContainer.style.display = 'block';
   }
 
+  /**
+   * Hides and clears the message container
+   */
   function hideMessage() {
     messageContainer.style.display = 'none';
     messageContainer.textContent = '';
     messageContainer.className = 'newsletter-message';
   }
 
+  /**
+   * Handles form submission via AJAX
+   *
+   * Prevents default form submission, checks rate limiting,
+   * submits to Buttondown API, and displays appropriate feedback
+   *
+   * @param {SubmitEvent} e - The form submit event
+   */
   form.addEventListener('submit', function(e) {
     e.preventDefault();
     hideMessage();
@@ -66,10 +96,10 @@
       if (response.ok) {
         // Store submit time
         localStorage.setItem(RATE_LIMIT_KEY, now.toString());
-        
+
         // Show success message
         showMessage('Thanks! Check your email to confirm.', 'success');
-        
+
         // Clear form
         form.reset();
       } else {
