@@ -14,6 +14,9 @@
   const themeReset = document.getElementById('theme-reset');
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
 
+  // Exit early if theme toggle elements don't exist
+  if (!themeToggle || !themeReset) return;
+
   /**
    * Gets the current theme from localStorage or system preference
    *
