@@ -29,7 +29,7 @@ layout: false
     <entry>
         <title>📚 Added to shelf: {{ book.data.title }}</title>
         <link href="{{ book.data.link }}"/>
-        <updated>{{ book.data.dateAdded }}T00:00:00Z</updated>
+        <updated>{{ book.data.dateAdded | dateToRfc3339 }}</updated>
         <id>{{ book.url | absoluteUrl(site.url or 'https://chrisguimarin.com') }}</id>
         <content type="html"><![CDATA[
             <p>Added <strong>{{ book.data.title }}</strong> by {{ book.data.author }} to my shelf.</p>
