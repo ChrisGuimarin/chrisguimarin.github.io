@@ -67,7 +67,7 @@
 }
 
 /* Mobile adjustments */
- @media (width <= 500px) {
+@media (width <= 500px) {
     .writing-item-title {
         font-size: 1.5rem;
     }
