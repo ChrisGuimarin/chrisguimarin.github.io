@@ -1,6 +1,5 @@
 /* Import Base Styles */
 @import url("breakpoints.css");
-@import url("theme.css");
 @import url("sentient.css");
 
 /* Import Components */
@@ -231,12 +230,6 @@ nav ul {
     padding: 0;
     display: flex;
     gap: var(--spacing-xs);
-}
-
-nav li.nav-link+li.nav-link::after {
-    content: "/";
-    margin-left: var(--spacing-xs);
-    color: var(--color-text-muted);
 }
 
 nav a[aria-current="page"] {
