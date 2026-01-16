@@ -19,9 +19,9 @@ nav ul {
     gap: var(--spacing-xs);
 }
 
-nav li.nav-link + li.nav-link::after {
+nav li.nav-link:not(:first-child)::before {
     content: "/";
-    margin-left: var(--spacing-xs);
+    margin-right: var(--spacing-xs);
     color: var(--color-text-muted);
 }
 
