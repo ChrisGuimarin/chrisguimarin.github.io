@@ -180,9 +180,9 @@ nav ul {
     display: flex;
     gap: var(--spacing-xs);
 }
-nav li.nav-link + li.nav-link::after {
+nav li.nav-link:not(:first-child)::before {
     content: "/";
-    margin-left: var(--spacing-xs);
+    margin-right: var(--spacing-xs);
     color: var(--color-text-muted);
 }
 nav a[aria-current="page"] {
