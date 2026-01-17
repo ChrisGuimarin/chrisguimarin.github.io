@@ -8,25 +8,25 @@ layout: false
 <feed xmlns="http://www.w3.org/2005/Atom">
     <title>Chris Guimarin – Writing</title>
     <subtitle>Essays, notes, and explorations from the intersection of design, technology, and leadership</subtitle>
-    <link href="{{ '/writing/feed.xml' | absoluteUrl(site.url or 'https://chrisguimarin.com') }}" rel="self"/>
-    <link href="{{ '/writing/' | absoluteUrl(site.url or 'https://chrisguimarin.com') }}"/>
+    <link href="{{ '/writing/feed.xml' | absoluteUrl(site.url) }}" rel="self"/>
+    <link href="{{ '/writing/' | absoluteUrl(site.url) }}"/>
     {% if collections.writing.length > 0 %}
     <updated>{{ collections.writing | getNewestCollectionItemDate | dateToRfc3339 }}</updated>
     {% else %}
     <updated>2025-01-01T00:00:00Z</updated>
     {% endif %}
-    <id>{{ '/writing/' | absoluteUrl(site.url or 'https://chrisguimarin.com') }}</id>
+    <id>{{ '/writing/' | absoluteUrl(site.url) }}</id>
     <author>
         <name>Chris Guimarin</name>
     </author>
     {% for post in collections.writing | reverse %}
     <entry>
         <title>{{ post.data.title }}</title>
-        <link href="{{ post.url | absoluteUrl(site.url or 'https://chrisguimarin.com') }}"/>
+        <link href="{{ post.url | absoluteUrl(site.url) }}"/>
         <updated>{{ post.date | dateToRfc3339 }}</updated>
         <published>{{ post.date | dateToRfc3339 }}</published>
-        <id>{{ post.url | absoluteUrl(site.url or 'https://chrisguimarin.com') }}</id>
-        <content type="html">{{ post.templateContent | htmlToAbsoluteUrls(site.url or 'https://chrisguimarin.com') }}</content>
+        <id>{{ post.url | absoluteUrl(site.url) }}</id>
+        <content type="html">{{ post.templateContent | htmlToAbsoluteUrls(site.url) }}</content>
     </entry>
     {%- endfor %}
 </feed>
