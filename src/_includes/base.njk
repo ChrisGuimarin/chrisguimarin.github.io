@@ -5,19 +5,19 @@
     <title>{{ title }} – Chris Guimarin</title>
     <link rel="stylesheet" href="/assets/css/main.css" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta name="description" content="{{ description | default('Design Leader at Blizzard, Broadway investor, and connector of big ideas to next steps.') }}" />
+    <meta name="description" content="{{ description | default(site.description) }}" />
 
     <!-- Open Graph -->
     <meta property="og:title" content="{{ title }} – Chris Guimarin" />
-    <meta property="og:description" content="{{ description | default('Design Leader at Blizzard, Broadway investor, and connector of big ideas to next steps.') }}" />
-    <meta property="og:url" content="https://chrisguimarin.com{{ page.url }}" />
+    <meta property="og:description" content="{{ description | default(site.description) }}" />
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Chris Guimarin" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="{{ title }} – Chris Guimarin" />
-    <meta name="twitter:description" content="{{ description | default('Design Leader at Blizzard, Broadway investor, and connector of big ideas to next steps.') }}" />
+    <meta name="twitter:description" content="{{ description | default(site.description) }}" />
 
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; font-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self'; img-src 'self' data:; form-action 'self' https://buttondown.com; connect-src 'self' https://buttondown.com; frame-ancestors 'none';">
 

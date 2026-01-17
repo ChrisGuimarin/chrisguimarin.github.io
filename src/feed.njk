@@ -8,21 +8,21 @@ layout: false
 <feed xmlns="http://www.w3.org/2005/Atom">
     <title>Chris Guimarin</title>
     <subtitle>Design, leadership, and the stage</subtitle>
-    <link href="{{ '/feed.xml' | absoluteUrl(site.url or 'https://chrisguimarin.com') }}" rel="self"/>
-    <link href="{{ '/' | absoluteUrl(site.url or 'https://chrisguimarin.com') }}"/>
+    <link href="{{ '/feed.xml' | absoluteUrl(site.url) }}" rel="self"/>
+    <link href="{{ '/' | absoluteUrl(site.url) }}"/>
     <updated>{{ collections.all | getNewestCollectionItemDate | dateToRfc3339 }}</updated>
-    <id>{{ '/' | absoluteUrl(site.url or 'https://chrisguimarin.com') }}</id>
+    <id>{{ '/' | absoluteUrl(site.url) }}</id>
     <author>
         <name>Chris Guimarin</name>
     </author>
     {% for post in collections.writing | reverse %}
     <entry>
         <title>{{ post.data.title }}</title>
-        <link href="{{ post.url | absoluteUrl(site.url or 'https://chrisguimarin.com') }}"/>
+        <link href="{{ post.url | absoluteUrl(site.url) }}"/>
         <updated>{{ post.date | dateToRfc3339 }}</updated>
         <published>{{ post.date | dateToRfc3339 }}</published>
-        <id>{{ post.url | absoluteUrl(site.url or 'https://chrisguimarin.com') }}</id>
-        <content type="html">{{ post.templateContent | htmlToAbsoluteUrls(site.url or 'https://chrisguimarin.com') }}</content>
+        <id>{{ post.url | absoluteUrl(site.url) }}</id>
+        <content type="html">{{ post.templateContent | htmlToAbsoluteUrls(site.url) }}</content>
     </entry>
     {% endfor %}
     {% for book in collections.books | reverse %}
@@ -30,11 +30,11 @@ layout: false
         <title>📚 Added to shelf: {{ book.data.title }}</title>
         <link href="{{ book.data.link }}"/>
         <updated>{{ book.data.dateAdded | dateToRfc3339 }}</updated>
-        <id>{{ book.url | absoluteUrl(site.url or 'https://chrisguimarin.com') }}</id>
+        <id>{{ book.url | absoluteUrl(site.url) }}</id>
         <content type="html"><![CDATA[
             <p>Added <strong>{{ book.data.title }}</strong> by {{ book.data.author }} to my shelf.</p>
             {% if book.data.cover %}
-            <p><img src="{{ book.data.cover | absoluteUrl(site.url or 'https://chrisguimarin.com') }}" alt="{{ book.data.title }} cover" style="max-width: 200px;"></p>
+            <p><img src="{{ book.data.cover | absoluteUrl(site.url) }}" alt="{{ book.data.title }} cover" style="max-width: 200px;"></p>
             {% endif %}
             <p><a href="{{ book.data.link }}">Find this book</a></p>
         ]]></content>
