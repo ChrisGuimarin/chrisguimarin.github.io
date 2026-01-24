@@ -11,6 +11,12 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addPassthroughCopy({"src/assets/images": "assets/images"});
     eleventyConfig.addPassthroughCopy({"src/assets/js": "assets/js"});
 
+    // Copy .nojekyll to prevent GitHub Pages from running Jekyll
+    eleventyConfig.addPassthroughCopy("src/.nojekyll");
+
+    // Copy robots.txt
+    eleventyConfig.addPassthroughCopy("src/robots.txt");
+
     // Handle CSS files
     eleventyConfig.addTemplateFormats("css");
 
