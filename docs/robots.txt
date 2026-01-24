@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+
+# Explicitly allow RSS feed access
+User-agent: Buttondown
+Allow: /
+
+User-agent: Feedbin
+Allow: /
+
+User-agent: Feedly
+Allow: /
+
+Sitemap: https://chrisguimarin.com/sitemap.xml
