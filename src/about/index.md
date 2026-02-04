@@ -7,15 +7,22 @@ description: Senior UX manager at Blizzard, Broadway producer, and lifelong conn
 # About
 
 <div class="about-intro">
-<img src="/assets/images/chris-guimarin-600.jpg" 
-     srcset="/assets/images/chris-guimarin-300.jpg 300w,
-             /assets/images/chris-guimarin-600.jpg 600w,
-             /assets/images/chris-guimarin-900.jpg 900w" 
-     sizes="(max-width: 600px) 100vw, 300px"
-     alt="Chris Guimarin" 
-     class="profile-photo"
-     loading="eager"
-     decoding="async">
+<picture>
+  <source type="image/webp"
+          srcset="/assets/images/chris-guimarin-300.webp 300w,
+                  /assets/images/chris-guimarin-600.webp 600w,
+                  /assets/images/chris-guimarin-900.webp 900w"
+          sizes="(max-width: 600px) 100vw, 300px">
+  <img src="/assets/images/chris-guimarin-600.jpg"
+       srcset="/assets/images/chris-guimarin-300.jpg 300w,
+               /assets/images/chris-guimarin-600.jpg 600w,
+               /assets/images/chris-guimarin-900.jpg 900w"
+       sizes="(max-width: 600px) 100vw, 300px"
+       alt="Chris Guimarin"
+       class="profile-photo"
+       loading="eager"
+       decoding="async">
+</picture>
 
 I thrive at the intersection of imagination and pragmatism. Raised in Los Gatos, California, now rooted in New York City, I jump into the best-coast debate whenever it surfaces. As an Associate Director of Design for Battle.net at Blizzard Entertainment I lead designers who elevate the player-support journey, build internal tools that keep live services humming, and clear workflows for game developers. My superpower is converting abstract ideas into road-ready steps.
 
