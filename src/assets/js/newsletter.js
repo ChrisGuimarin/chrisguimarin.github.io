@@ -38,14 +38,14 @@
   function showMessage(text, type) {
     messageContainer.textContent = text;
     messageContainer.className = `newsletter-message newsletter-message-${type}`;
-    messageContainer.style.display = 'block';
+    messageContainer.classList.add('is-visible');
   }
 
   /**
    * Hides and clears the message container
    */
   function hideMessage() {
-    messageContainer.style.display = 'none';
+    messageContainer.classList.remove('is-visible');
     messageContainer.textContent = '';
     messageContainer.className = 'newsletter-message';
   }
