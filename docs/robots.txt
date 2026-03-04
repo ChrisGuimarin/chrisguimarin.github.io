@@ -11,4 +11,3 @@ Allow: /
 User-agent: Feedly
 Allow: /
 
-Sitemap: https://chrisguimarin.com/sitemap.xml

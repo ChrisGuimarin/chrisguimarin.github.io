@@ -66,14 +66,7 @@
     border-color: var(--color-primary);
     box-shadow:
         0 0 0 1px var(--color-primary),
-        0 0 20px -5px rgb(77 168 218 / 40%);
-}
-
-/* Light mode glow adjustment */
-:root:not([data-theme='dark']) .embeddable-buttondown-form input[type="email"]:focus {
-    box-shadow:
-        0 0 0 1px var(--color-primary),
-        0 0 20px -5px rgb(17 104 155 / 35%);
+        0 0 20px -5px color-mix(in oklch, var(--color-primary) 40%, transparent);
 }
 
 .embeddable-buttondown-form input[type="submit"] {
@@ -126,6 +119,10 @@
     border-radius: var(--border-radius);
     font-size: 0.95rem;
     line-height: var(--line-height-base);
+}
+
+.newsletter-message.is-visible {
+    display: block;
 }
 
 .newsletter-message-success {
