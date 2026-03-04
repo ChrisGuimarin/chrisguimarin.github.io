@@ -45,11 +45,11 @@
 .writing-recent-list {
     list-style: none;
     padding: 0;
-    margin: var(--spacing-md) 0;
+    margin: var(--spacing-xs) 0;
 }
 
 .writing-recent-list li {
-    margin-bottom: var(--spacing-sm);
+    margin-bottom: 0.35rem;
 }
 
 .writing-recent-list a {
