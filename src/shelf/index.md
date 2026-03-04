@@ -6,18 +6,23 @@ description: Essays, notes, and the books I keep handing to friends, all in one 
 
 {% render "page-header.njk", title: "Shelf", feedUrl: "/feed.xml", feedLabel: "Subscribe to book updates" %}
 
-{% if collections.writing.length > 0 %}
-    {% for post in collections.writing | reverse | slice(0, 3) %}
-    - [{{ post.data.title }}]({{ post.url }}) - {{ post.date | dateReadable }}
-    {% endfor %}
-    {% if collections.writing.length > 3 %}
-    [View all writing →](/writing/)
-    {% endif %}
-{% else %}
-    Writing coming soon.
-{% endif %}
+Words are how I see more clearly. Below are the essays I've been publishing and the books that keep reshaping how I look at the world. The shelf evolves as I read.
 
-Books are my favorite continuing-education program. Below are the titles I keep recommending to friends, spanning design, leadership, and the art of seeing. The shelf rotates as I read. Join my newsletter for updates on what is open on the nightstand.
+## Recent Writing
+
+{% assign recentWriting = collections.writing | reverse %}
+<ul class="writing-recent-list">
+{% for post in recentWriting limit:3 %}
+  <li>
+    <a href="{{ post.url }}">{{ post.data.title }}</a>
+    <span class="date"> — {{ post.data.date | date: "%B %Y" }}</span>
+  </li>
+{% endfor %}
+</ul>
+
+{% if collections.writing.length > 3 %}
+<a href="/writing/">View all writing →</a>
+{% endif %}
 
 ## Design & Product
 {% assign designBooks = collections.books | byCategory: "Design & Product" %}
