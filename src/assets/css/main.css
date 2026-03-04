@@ -119,8 +119,6 @@ body {
 }
 
 body {
-    /* Remove max-width, margin, and padding here */
-    font-family: system-ui, sans-serif;
     line-height: 1.5;
     background-color: var(--color-bg);
     color: var(--color-text);
@@ -140,7 +138,6 @@ body,
     padding: var(--spacing-sm);
     background-color: var(--color-bg);
     color: var(--color-text);
-    font-family: var(--font-family-base);
     line-height: 1.5;
 }
 

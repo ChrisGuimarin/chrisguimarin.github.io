@@ -10,7 +10,6 @@ const pages = [
   '/writing/',
   '/writing/culture-is-what-you-tolerate/',
   '/writing/marks-on-blank-pages/',
-  '/writing/test-buttondown-automation/',
   '/books/atomic-habits/',
   '/books/design-for-the-real-world/',
   '/books/design-of-everyday-things/',
