@@ -64,11 +64,11 @@
     --breakpoint-xs: 400px;
 
     /* Light Theme Colors */
-    --color-bg: oklch(100% 0 0);
-    --color-text: oklch(22% 0 0);
-    --color-text-muted: oklch(51% 0 0);
+    --color-bg: oklch(100% 0 0deg);
+    --color-text: oklch(22% 0 0deg);
+    --color-text-muted: oklch(51% 0 0deg);
     --color-primary: oklch(50% 0.111 242deg);
-    --color-border: oklch(92% 0 0);
+    --color-border: oklch(92% 0 0deg);
     --color-success-bg: oklch(92% 0.037 153deg);
     --color-success-border: oklch(89% 0.052 152deg);
     --color-success-text: oklch(40% 0.105 147deg);
@@ -80,11 +80,11 @@
 /* Dark theme colors */
 @media (prefers-color-scheme: dark) {
     :root:not([data-theme='light']) {
-        --color-bg: oklch(22% 0 0);
+        --color-bg: oklch(22% 0 0deg);
         --color-text: oklch(98% 0.009 286deg);
-        --color-text-muted: oklch(71% 0 0);
+        --color-text-muted: oklch(71% 0 0deg);
         --color-primary: oklch(70% 0.113 236deg);
-        --color-border: oklch(32% 0 0);
+        --color-border: oklch(32% 0 0deg);
         --color-success-bg: oklch(35% 0.078 145deg);
         --color-success-border: oklch(42% 0.087 144deg);
         --color-success-text: oklch(83% 0.078 145deg);
@@ -95,11 +95,11 @@
 }
 
 [data-theme='dark'] {
-    --color-bg: oklch(22% 0 0);
+    --color-bg: oklch(22% 0 0deg);
     --color-text: oklch(98% 0.009 286deg);
-    --color-text-muted: oklch(71% 0 0);
+    --color-text-muted: oklch(71% 0 0deg);
     --color-primary: oklch(70% 0.113 236deg);
-    --color-border: oklch(32% 0 0);
+    --color-border: oklch(32% 0 0deg);
     --color-success-bg: oklch(35% 0.078 145deg);
     --color-success-border: oklch(42% 0.087 144deg);
     --color-success-text: oklch(83% 0.078 145deg);
