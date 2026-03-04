@@ -1,6 +1,5 @@
 import { defineConfig, devices } from '@playwright/test';
 
-// Viewport configurations for AI review
 const viewports = {
   mobile: { width: 375, height: 667 },
   tablet: { width: 768, height: 1024 },

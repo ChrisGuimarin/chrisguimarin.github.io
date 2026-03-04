@@ -1,164 +1,87 @@
 import { test, expect } from '@playwright/test';
 
-// Helper function to wait for page to be fully loaded
+// All site pages (homepage is covered by its own dedicated test below)
+const pages = [
+  '/about/',
+  '/projects/',
+  '/shelf/',
+  '/theater/',
+  '/work/battle-net/',
+  '/writing/',
+  '/writing/culture-is-what-you-tolerate/',
+  '/writing/marks-on-blank-pages/',
+  '/writing/test-buttondown-automation/',
+  '/books/atomic-habits/',
+  '/books/design-for-the-real-world/',
+  '/books/design-of-everyday-things/',
+  '/books/designing-for-people/',
+  '/books/designing-programmes/',
+  '/books/in-praise-of-shadows/',
+  '/books/interaction-of-color/',
+  '/books/making-of-a-manager/',
+  '/books/nasa-graphics-standards/',
+  '/books/paul-rand/',
+  '/books/product-design-for-the-web/',
+  '/books/secret-lives-of-color/',
+  '/books/steve-jobs/',
+  '/books/the-information/',
+  '/books/thinking-in-systems/',
+];
+
+// Wait for full render: images (including lazy), fonts, and layout shifts
 async function waitForPageLoad(page) {
   await page.waitForLoadState('networkidle');
-  
-  // Wait for all images to load
+
+  // Force lazy-loaded images to load eagerly for accurate screenshots
   await page.evaluate(() => {
-    return Promise.all(
+    document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+      img.loading = 'eager';
+    });
+  });
+
+  // Wait for all images to finish loading
+  await page.evaluate(() =>
+    Promise.all(
       Array.from(document.images)
         .filter(img => !img.complete)
         .map(img => new Promise(resolve => {
           img.addEventListener('load', resolve);
           img.addEventListener('error', resolve);
         }))
-    );
-  });
-  
-  // Wait for fonts to load
+    )
+  );
+
+  // Wait for web fonts
   await page.evaluate(() => document.fonts.ready);
-  
-  // Additional wait for any layout shifts
+
+  // Allow for any remaining layout shifts
   await page.waitForTimeout(500);
 }
 
-// Helper function to get viewport name from test info
-function getViewportName(testInfo) {
-  const projectName = testInfo.project.name;
-  if (projectName.includes('mobile')) return 'mobile';
-  if (projectName.includes('tablet')) return 'tablet';
-  return 'desktop';
-}
-
-// Helper function to get browser name from test info
-function getBrowserName(testInfo) {
-  const projectName = testInfo.project.name;
-  if (projectName.includes('webkit')) return 'webkit';
-  if (projectName.includes('firefox')) return 'firefox';
-  return 'chromium';
-}
-
-// Test 1: Static route - Homepage
-test('homepage renders correctly', async ({ page }, testInfo) => {
+test('homepage renders correctly', async ({ page }) => {
   await page.goto('/');
-  
-  // Force all lazy-loaded images to load eagerly for testing
-  await page.evaluate(() => {
-    document.querySelectorAll('img[loading="lazy"]').forEach(img => {
-      img.loading = 'eager';
-    });
-  });
-  
   await waitForPageLoad(page);
-  
-  const viewport = getViewportName(testInfo);
-  const browser = getBrowserName(testInfo);
-  
-  await expect(page).toHaveScreenshot(
-    `chrisguimarin-homepage-${browser}-${viewport}.png`,
-    {
+
+  await expect(page).toHaveScreenshot('chrisguimarin-homepage.png', {
+    fullPage: true,
+    animations: 'disabled',
+    timeout: 10000,
+  });
+});
+
+test('site pages render correctly', async ({ page }) => {
+  test.setTimeout(60000);
+
+  for (const url of pages) {
+    await page.goto(url);
+    await waitForPageLoad(page);
+
+    const name = url.replace(/^\//, '').replace(/\/$/, '').replace(/\//g, '-') || 'index';
+
+    await expect(page).toHaveScreenshot(`chrisguimarin-${name}.png`, {
       fullPage: true,
       animations: 'disabled',
       timeout: 10000,
-    }
-  );
-});
-
-// Test 2: Automatic page discovery
-test('discovered pages render correctly', async ({ page }, testInfo) => {
-  test.setTimeout(120000); // Increase timeout for page discovery
-  const discoveredPages = new Set(['/']); // Start with homepage
-  const processedPages = new Set();
-  const viewport = getViewportName(testInfo);
-  const browser = getBrowserName(testInfo);
-
-  // Function to discover links from a page
-  async function discoverLinks(url) {
-    if (processedPages.has(url)) return;
-    processedPages.add(url);
-
-    await page.goto(url, { waitUntil: 'load' });
-    // Use shorter wait for discovery since we're crawling many pages
-    await page.waitForTimeout(1000);
-
-    // Extract all internal links
-    const links = await page.evaluate(() => {
-      const anchors = Array.from(document.querySelectorAll('a[href]'));
-      return anchors
-        .map(a => a.href)
-        .filter(href => {
-          try {
-            const url = new URL(href);
-            // Only internal links (same origin)
-            return url.origin === window.location.origin;
-          } catch {
-            return false;
-          }
-        })
-        .map(href => {
-          const url = new URL(href);
-          return url.pathname;
-        });
     });
-
-    // Add newly discovered links
-    links.forEach(link => {
-      if (!discoveredPages.has(link) && !processedPages.has(link)) {
-        discoveredPages.add(link);
-      }
-    });
-
-    // Recursively discover from new links
-    for (const link of links) {
-      if (!processedPages.has(link)) {
-        await discoverLinks(link);
-      }
-    }
-  }
-
-  // Start discovery from homepage
-  await discoverLinks('/');
-
-  // Screenshot all discovered pages
-  for (const pageUrl of discoveredPages) {
-    await page.goto(pageUrl, { waitUntil: 'load' });
-    
-    // Force all lazy-loaded images to load eagerly for testing
-    await page.evaluate(() => {
-      document.querySelectorAll('img[loading="lazy"]').forEach(img => {
-        img.loading = 'eager';
-      });
-    });
-    
-    // Wait for images and fonts
-    await page.evaluate(() => {
-      return Promise.all(
-        Array.from(document.images)
-          .filter(img => !img.complete)
-          .map(img => new Promise(resolve => {
-            img.addEventListener('load', resolve);
-            img.addEventListener('error', resolve);
-          }))
-      );
-    });
-    await page.evaluate(() => document.fonts.ready);
-    await page.waitForTimeout(500);
-
-    // Create a safe filename from the URL
-    const safeName = pageUrl
-      .replace(/^\//, '')
-      .replace(/\/$/, '')
-      .replace(/\//g, '-')
-      || 'index';
-
-    await expect(page).toHaveScreenshot(
-      `chrisguimarin-${safeName}-${browser}-${viewport}.png`,
-      {
-        fullPage: true,
-        animations: 'disabled',
-        timeout: 10000,
-      }
-    );
   }
 });
