@@ -359,13 +359,7 @@ nav a:hover,
     border-color: var(--color-primary);
     box-shadow:
         0 0 0 1px var(--color-primary),
-        0 0 20px -5px rgb(77 168 218 / 40%);
-}
-/* Light mode glow adjustment */
-:root:not([data-theme='dark']) .embeddable-buttondown-form input[type="email"]:focus {
-    box-shadow:
-        0 0 0 1px var(--color-primary),
-        0 0 20px -5px rgb(17 104 155 / 35%);
+        0 0 20px -5px color-mix(in oklch, var(--color-primary) 40%, transparent);
 }
 .embeddable-buttondown-form input[type="submit"] {
     grid-area: submit;
@@ -411,6 +405,9 @@ nav a:hover,
     border-radius: var(--border-radius);
     font-size: 0.95rem;
     line-height: var(--line-height-base);
+}
+.newsletter-message.is-visible {
+    display: block;
 }
 .newsletter-message-success {
     background-color: var(--color-success-bg);
@@ -670,46 +667,46 @@ nav a:hover,
     --breakpoint-xs: 400px;
 
     /* Light Theme Colors */
-    --color-bg: #fff;
-    --color-text: #1a1a1a;
-    --color-text-muted: #666;
-    --color-primary: #11689b;
-    --color-border: #e5e5e5;
-    --color-success-bg: #d4edda;
-    --color-success-border: #c3e6cb;
-    --color-success-text: #155724;
-    --color-error-bg: #f8d7da;
-    --color-error-border: #f5c6cb;
-    --color-error-text: #721c24;
+    --color-bg: oklch(100% 0 0deg);
+    --color-text: oklch(22% 0 0deg);
+    --color-text-muted: oklch(51% 0 0deg);
+    --color-primary: oklch(50% 0.111 242deg);
+    --color-border: oklch(92% 0 0deg);
+    --color-success-bg: oklch(92% 0.037 153deg);
+    --color-success-border: oklch(89% 0.052 152deg);
+    --color-success-text: oklch(40% 0.105 147deg);
+    --color-error-bg: oklch(91% 0.037 11deg);
+    --color-error-border: oklch(87% 0.054 11deg);
+    --color-error-text: oklch(37% 0.119 20deg);
 }
 /* Dark theme colors */
 @media (prefers-color-scheme: dark) {
     :root:not([data-theme='light']) {
-        --color-bg: #1a1a1a;
-        --color-text: #F8F8FF;
-        --color-text-muted: #a0a0a0;
-        --color-primary: #4da8da;
-        --color-border: #333;
-        --color-success-bg: #1e4620;
-        --color-success-border: #2d5a2e;
-        --color-success-text: #a8d5a8;
-        --color-error-bg: #4a1f1f;
-        --color-error-border: #5e2a2a;
-        --color-error-text: #f5b5b5;
+        --color-bg: oklch(22% 0 0deg);
+        --color-text: oklch(98% 0.009 286deg);
+        --color-text-muted: oklch(71% 0 0deg);
+        --color-primary: oklch(70% 0.113 236deg);
+        --color-border: oklch(32% 0 0deg);
+        --color-success-bg: oklch(35% 0.078 145deg);
+        --color-success-border: oklch(42% 0.087 144deg);
+        --color-success-text: oklch(83% 0.078 145deg);
+        --color-error-bg: oklch(30% 0.066 22deg);
+        --color-error-border: oklch(36% 0.076 22deg);
+        --color-error-text: oklch(83% 0.075 19deg);
     }
 }
 [data-theme='dark'] {
-    --color-bg: #1a1a1a;
-    --color-text: #F8F8FF;
-    --color-text-muted: #a0a0a0;
-    --color-primary: #4da8da;
-    --color-border: #333;
-    --color-success-bg: #1e4620;
-    --color-success-border: #2d5a2e;
-    --color-success-text: #a8d5a8;
-    --color-error-bg: #4a1f1f;
-    --color-error-border: #5e2a2a;
-    --color-error-text: #f5b5b5;
+    --color-bg: oklch(22% 0 0deg);
+    --color-text: oklch(98% 0.009 286deg);
+    --color-text-muted: oklch(71% 0 0deg);
+    --color-primary: oklch(70% 0.113 236deg);
+    --color-border: oklch(32% 0 0deg);
+    --color-success-bg: oklch(35% 0.078 145deg);
+    --color-success-border: oklch(42% 0.087 144deg);
+    --color-success-text: oklch(83% 0.078 145deg);
+    --color-error-bg: oklch(30% 0.066 22deg);
+    --color-error-border: oklch(36% 0.076 22deg);
+    --color-error-text: oklch(83% 0.075 19deg);
 }
 /* ==========================================================================
    Base Styles
@@ -721,8 +718,6 @@ body {
     padding: 0;
 }
 body {
-    /* Remove max-width, margin, and padding here */
-    font-family: system-ui, sans-serif;
     line-height: 1.5;
     background-color: var(--color-bg);
     color: var(--color-text);
@@ -740,7 +735,6 @@ body,
     padding: var(--spacing-sm);
     background-color: var(--color-bg);
     color: var(--color-text);
-    font-family: var(--font-family-base);
     line-height: 1.5;
 }
 main {
