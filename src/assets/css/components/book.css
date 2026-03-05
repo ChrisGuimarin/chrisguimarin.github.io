@@ -39,3 +39,17 @@
     width: 100%;
     color: var(--color-text);
 }
+
+/* Browse link — appears at bottom of book and writing article pages */
+.shelf-browse-link {
+    display: inline-block;
+    margin-top: var(--spacing-md);
+    color: var(--color-primary);
+    font-size: var(--font-size-small);
+    text-decoration: none;
+}
+
+.shelf-browse-link:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 0.1em;
+}

@@ -7,7 +7,7 @@
     display: flex;
     align-items: baseline;
     gap: var(--spacing-sm);
-    margin-top: 0.67em;
+    margin-top: 0.67em; /* matches browser default h1 top margin */
     margin-bottom: var(--spacing-sm);
 }
 
