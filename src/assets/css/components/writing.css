@@ -18,7 +18,7 @@
 
 .writing-item-title {
     margin: 0 0 var(--spacing-xs) 0;
-    font-family: Sentient-Variable, Sentient-Bold, serif;
+    font-family: Sentient-Variable, serif;
     font-weight: 700;
     font-size: var(--font-size-title);
     line-height: 1.3;
@@ -62,6 +62,20 @@
 }
 
 .writing-item-title a:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 0.1em;
+}
+
+/* Browse shelf link — appears at the bottom of book and writing article pages */
+.shelf-browse-link {
+    display: inline-block;
+    margin-top: var(--spacing-md);
+    color: var(--color-primary);
+    font-size: var(--font-size-small);
+    text-decoration: none;
+}
+
+.shelf-browse-link:hover {
     text-decoration: underline;
     text-decoration-thickness: 0.1em;
 }

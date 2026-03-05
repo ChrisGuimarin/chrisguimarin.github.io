@@ -2,10 +2,6 @@
 layout: base.njk
 ---
 
-<nav class="sub-nav">
-    <a href="/shelf/">← Back to Shelf</a>
-</nav>
-
 <article class="book">
     <div class="book-header">
         <img src="{{ cover }}" alt="{{ title }} book cover" class="book-cover" loading="eager" decoding="async">
@@ -16,6 +12,8 @@ layout: base.njk
             <a href="{{ link }}" class="book-link">Find this book</a>
         </div>
     </div>
-    
+
     {{ content | safe }}
 </article>
+
+<a href="/shelf/" class="shelf-browse-link">Browse the Shelf →</a>
