@@ -29,18 +29,7 @@ nav a[aria-current="page"] {
     font-weight: bold;
 }
 
-/* Secondary Navigation */
-.sub-nav {
-    margin-bottom: var(--spacing-md);
-}
-
-.sub-nav a {
-    color: var(--color-text-muted);
-    text-decoration: none;
-}
-
-nav a:hover,
-.sub-nav a:hover {
+nav a:hover {
     text-decoration: underline;
 }
 
