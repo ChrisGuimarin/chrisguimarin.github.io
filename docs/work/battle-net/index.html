@@ -46,21 +46,12 @@
           <li class="nav-link"><a href="/projects/" >Projects</a></li>
           <li class="nav-link"><a href="/shelf/" >Shelf</a></li>
           <li class="nav-link"><a href="/about/" >About</a></li>
-          <!-- Theme toggle and reset buttons do NOT get the nav-link class -->
-          <li class="theme-toggle-group" role="group" aria-label="Theme controls">
-            <button 
-              id="theme-toggle" 
-              aria-label="Toggle dark mode"
-              title="Toggle dark mode">
-              <span class="theme-toggle-light">☀️</span>
-              <span class="theme-toggle-dark">🌙</span>
-            </button>
-            <button
-              id="theme-reset"
-              aria-label="Reset theme to system default"
-              title="Reset theme to system default">
-              ♻️
-            </button>
+          <!-- Theme toggle -->
+          <li class="theme-toggle-group">
+            <label class="toggle-switch">
+              <input type="checkbox" id="theme-toggle" aria-label="Toggle dark mode">
+              <span class="toggle-slider"></span>
+            </label>
           </li>
         </ul>
       </nav>

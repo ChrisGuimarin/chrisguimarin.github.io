@@ -6,7 +6,7 @@ description: Design Leader at Blizzard, Broadway investor, and connector of big 
 
 # Hi, I'm Chris.
 
-## Design Leader and Broadway Backer
+<p class="page-subtitle">Design Leader and Broadway Backer</p>
 
 Where imagination meets pragmatism.
 
