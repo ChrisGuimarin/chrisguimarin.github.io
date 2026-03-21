@@ -11,11 +11,10 @@
  */
 (function() {
   const themeToggle = document.getElementById('theme-toggle');
-  const themeReset = document.getElementById('theme-reset');
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
 
-  // Exit early if theme toggle elements don't exist
-  if (!themeToggle || !themeReset) return;
+  // Exit early if theme toggle doesn't exist
+  if (!themeToggle) return;
 
   /**
    * Gets the current theme from localStorage or system preference
@@ -36,7 +35,7 @@
    */
   const setTheme = (theme, persist = false) => {
     document.documentElement.setAttribute('data-theme', theme);
-    themeToggle.setAttribute('aria-pressed', theme === 'dark');
+    themeToggle.checked = (theme === 'dark');
     if (persist) {
       localStorage.setItem('theme', theme);
     }
@@ -45,17 +44,9 @@
   // Initialize theme on page load (do not persist)
   setTheme(getTheme());
 
-  // Toggle theme on button click (persist user choice)
-  themeToggle.addEventListener('click', () => {
-    const currentTheme = getTheme();
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    setTheme(newTheme, true);
-  });
-
-  // Reset theme to system default
-  themeReset.addEventListener('click', () => {
-    localStorage.removeItem('theme');
-    setTheme(getTheme());
+  // Toggle theme on checkbox change (persist user choice)
+  themeToggle.addEventListener('change', () => {
+    setTheme(themeToggle.checked ? 'dark' : 'light', true);
   });
 
   // Listen for system theme changes (only applies if user hasn't set a preference)

@@ -639,6 +639,14 @@ h2 {
 h2:first-child {
     margin-top: 0;
 }
+/* Subtitle under the H1 on the homepage — distinct from section H2s */
+.page-subtitle {
+    font-family: Sentient-Variable, serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--color-text-muted);
+    margin: 0 0 var(--spacing-sm) 0;
+}
 /* Pull quote — editorial excerpt displayed on the homepage */
 .pull-quote {
     margin: var(--spacing-sm) 0;
@@ -990,59 +998,50 @@ nav a[aria-current="page"] {
 .theme-toggle-group {
     display: flex;
     align-items: center;
-    position: relative;
+    gap: 0.4rem;
 }
-#theme-toggle,
-#theme-reset {
-    background: none;
-    border: none;
-    padding: 0;
+.toggle-label {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
     cursor: pointer;
-    font-size: 1.2rem;
-    display: flex;
-    align-items: center;
-    line-height: 1;
-    vertical-align: middle;
 }
-#theme-toggle:hover {
-    opacity: 0.8;
-}
-.theme-toggle-light {
-    display: none;
-}
-.theme-toggle-dark {
-    display: block;
-}
-[data-theme='dark'] .theme-toggle-light {
-    display: block;
-}
-[data-theme='dark'] .theme-toggle-dark {
-    display: none;
-}
-#theme-toggle span,
-#theme-reset {
-    line-height: 1;
-    vertical-align: middle;
-
-    /* Optional: tweak baseline alignment */
+.toggle-switch {
     position: relative;
-    top: 0;
+    display: inline-block;
+    width: 36px;
+    height: 20px;
+    cursor: pointer;
 }
-#theme-reset {
-    visibility: hidden;
+.toggle-switch input {
     opacity: 0;
-    margin-left: 0.5em;
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 1.2rem;
-    align-items: center;
-    transition: opacity 0.2s;
+    width: 0;
+    height: 0;
+    position: absolute;
 }
-.theme-toggle-group:hover #theme-reset,
-.theme-toggle-group:focus-within #theme-reset {
-    visibility: visible;
-    opacity: 1;
+.toggle-slider {
+    position: absolute;
+    inset: 0;
+    background-color: var(--color-border);
+    border-radius: 20px;
+    transition: background-color 0.2s;
+}
+.toggle-slider::before {
+    content: "";
+    position: absolute;
+    height: 14px;
+    width: 14px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 0.2s;
+    box-shadow: 0 1px 3px rgb(0 0 0 / 25%);
+}
+input:checked + .toggle-slider {
+    background-color: var(--color-primary);
+}
+input:checked + .toggle-slider::before {
+    transform: translateX(16px);
 }
 /* Visually hide skip link except when focused */
 .skip-link {
