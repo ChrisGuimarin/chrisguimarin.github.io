@@ -14,8 +14,9 @@ module.exports = function (eleventyConfig) {
     // Copy .nojekyll to prevent GitHub Pages from running Jekyll
     eleventyConfig.addPassthroughCopy("src/.nojekyll");
 
-    // Copy robots.txt
+    // Copy robots.txt and llms.txt
     eleventyConfig.addPassthroughCopy("src/robots.txt");
+    eleventyConfig.addPassthroughCopy("src/llms.txt");
 
     // Handle CSS files
     eleventyConfig.addTemplateFormats("css");

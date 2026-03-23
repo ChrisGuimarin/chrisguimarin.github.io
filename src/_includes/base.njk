@@ -35,6 +35,69 @@
     {% if page.url.startsWith('/writing/') %}
     <link rel="alternate" type="application/atom+xml" title="Chris Guimarin – Writing" href="/writing/feed.xml">
     {% endif %}
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "{{ site.url }}/#person",
+          "name": "{{ site.author.name }}",
+          "jobTitle": "Associate Director of Design",
+          "description": "{{ site.description }}",
+          "url": "{{ site.url }}",
+          "image": "{{ site.url }}/assets/images/chris-guimarin-600.jpg",
+          "email": "{{ site.author.email }}",
+          "worksFor": {
+            "@type": "Organization",
+            "name": "Blizzard Entertainment",
+            "url": "https://www.blizzard.com"
+          },
+          "knowsAbout": [
+            "Design Leadership",
+            "User Experience Design",
+            "Gaming Platform Design",
+            "Player Support Systems",
+            "Design Systems",
+            "Product Design",
+            "Theater Production",
+            "Broadway Investing"
+          ],
+          "sameAs": [
+            "{{ site.social.linkedin }}",
+            "{{ site.social.instagram }}",
+            "{{ site.social.bluesky }}"
+          ]
+        }{% if page.url == "/" or page.url == "/about/" %},
+        {
+          "@type": "ProfilePage",
+          "@id": "{{ site.url }}{{ page.url }}#profilepage",
+          "url": "{{ site.url }}{{ page.url }}",
+          "name": "{{ title }} – Chris Guimarin",
+          "mainEntity": { "@id": "{{ site.url }}/#person" }
+        }{% endif %}{% if layout == "post.njk" %},
+        {
+          "@type": "Article",
+          "@id": "{{ site.url }}{{ page.url }}#article",
+          "headline": "{{ title }}",
+          "description": "{{ excerpt | default(description) | default('') }}",
+          "url": "{{ site.url }}{{ page.url }}",
+          "datePublished": "{{ date | dateIso }}",
+          "author": { "@id": "{{ site.url }}/#person" },
+          "publisher": { "@id": "{{ site.url }}/#person" }
+        }{% endif %}{% if layout == "work.njk" %},
+        {
+          "@type": "CreativeWork",
+          "@id": "{{ site.url }}{{ page.url }}#work",
+          "name": "{{ title }}",
+          "url": "{{ site.url }}{{ page.url }}",
+          "author": { "@id": "{{ site.url }}/#person" }
+        }{% endif %}
+      ]
+    }
+    </script>
   </head>
 
   <body>

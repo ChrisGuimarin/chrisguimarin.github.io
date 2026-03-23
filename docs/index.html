@@ -33,6 +33,52 @@
     <!-- RSS Feeds -->
     <link rel="alternate" type="application/atom+xml" title="Chris Guimarin" href="/feed.xml">
     
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://chrisguimarin.com/#person",
+          "name": "Chris Guimarin",
+          "jobTitle": "Associate Director of Design",
+          "description": "Design Leader at Blizzard, Broadway investor, and connector of big ideas to next steps.",
+          "url": "https://chrisguimarin.com",
+          "image": "https://chrisguimarin.com/assets/images/chris-guimarin-600.jpg",
+          "email": "hello@chrisguimarin.com",
+          "worksFor": {
+            "@type": "Organization",
+            "name": "Blizzard Entertainment",
+            "url": "https://www.blizzard.com"
+          },
+          "knowsAbout": [
+            "Design Leadership",
+            "User Experience Design",
+            "Gaming Platform Design",
+            "Player Support Systems",
+            "Design Systems",
+            "Product Design",
+            "Theater Production",
+            "Broadway Investing"
+          ],
+          "sameAs": [
+            "https://www.linkedin.com/in/chrisguimarin",
+            "https://www.instagram.com/chrisguimarin/",
+            "https://bsky.app/profile/chrisguimarin.com"
+          ]
+        },
+        {
+          "@type": "ProfilePage",
+          "@id": "https://chrisguimarin.com/#profilepage",
+          "url": "https://chrisguimarin.com/",
+          "name": "Home – Chris Guimarin",
+          "mainEntity": { "@id": "https://chrisguimarin.com/#person" }
+        }
+      ]
+    }
+    </script>
   </head>
 
   <body>
