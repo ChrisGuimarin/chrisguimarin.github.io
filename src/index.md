@@ -4,6 +4,21 @@ layout: base.njk
 description: Design Leader at Blizzard, Broadway investor, and connector of big ideas to next steps.
 ---
 
+<picture>
+  <source type="image/webp"
+          srcset="/assets/images/chris-guimarin-300.webp 300w,
+                  /assets/images/chris-guimarin-600.webp 600w"
+          sizes="80px">
+  <img src="/assets/images/chris-guimarin-300.jpg"
+       srcset="/assets/images/chris-guimarin-300.jpg 300w,
+               /assets/images/chris-guimarin-600.jpg 600w"
+       sizes="80px"
+       alt="Chris Guimarin"
+       class="homepage-avatar"
+       loading="eager"
+       decoding="async">
+</picture>
+
 # Hi, I'm Chris.
 
 <p class="page-subtitle">Design Leader and Broadway Backer</p>

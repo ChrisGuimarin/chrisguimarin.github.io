@@ -349,6 +349,19 @@ nav a[aria-current="page"] {
 
 
 /* ==========================================================================
+   Homepage Avatar
+   ========================================================================== */
+.homepage-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+    object-fit: cover;
+    object-position: center top;
+    margin: var(--spacing-md) 0 var(--spacing-xs) 0;
+    display: block;
+}
+
+/* ==========================================================================
    About Section
    ========================================================================== */
 .about-intro {
